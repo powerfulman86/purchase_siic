@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="siic_purchase_order" model="ir.ui.view">
+            <field name="name">purchase.order</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="before">
+                    <field name="order_type" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                </xpath>
+
+                <xpath expr="//field[@name='date_approve']" position="after">
+                    <field name="tender_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                    <field name="order_no" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                </xpath>
+
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button type="object"
+                            name="action_view_followup"
+                            class="oe_stat_button" string="Follow-Up"
+                            icon="fa-file-text-o"
+                            attrs="{'invisible': [('order_type', '!=', 'out')]}">
+                    </button>
+                </xpath>
+
+                <xpath expr="//page[@name='purchase_delivery_invoice']" position="inside">
+                    <group>
+                        <group>
+                            <field name="payment_type" options="{'no_create': True}"
+                                   attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="delivery_time" options="{'no_create': True}"
+                                   attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="final_guarantee" widget="radio"
+                                   attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        </group>
+                    </group>
+                </xpath>
+
+                <xpath expr="//field[@name='order_line']//tree//field[@name='product_id']" position="after">
+					<field name="tender_id"/>
+				</xpath>
+
+            </field>
+        </record>
+
+        <record id="purchase_rfq_tree_view_tender" model="ir.ui.view">
+			<field name="name">purchase.rfq.tree.view.custom</field>
+			<field name="model">purchase.order</field>
+			<field name="inherit_id" ref="purchase.purchase_order_tree"/>
+			<field name="arch" type="xml">
+				<field name="name" position="after">
+					<field name="tender_id"/>
+				</field>
+			</field>
+		</record>
+
+		<record id="purchase_order_tree_view_tender" model="ir.ui.view">
+			<field name="name">purchase.order.tree.view.custom</field>
+			<field name="model">purchase.order</field>
+			<field name="inherit_id" ref="purchase.purchase_order_view_tree"/>
+			<field name="arch" type="xml">
+				<field name="name" position="after">
+					<field name="tender_id"/>
+				</field>
+			</field>
+		</record>
+
+        <record id="purchase_order_search_view" model="ir.ui.view">
+			<field name="name">purchase.order.search.view</field>
+			<field name="model">purchase.order</field>
+			<field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+			<field name="arch" type="xml">
+				<field name="partner_id" position="before">
+					<field name="tender_id"/>
+				</field>
+				<filter name="vendor" position="before">
+					<filter string="Tender" name="tender" domain="[]" context="{'group_by':'tender_id'}"/>
+				</filter>
+			</field>
+		</record>
+
+    </data>
+</odoo>

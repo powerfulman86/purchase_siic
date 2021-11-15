@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_purchase_branch_req_form" model="ir.ui.view">
+            <field name="name">purchase.branch.req.form</field>
+            <field name="model">purchase.branch.req</field>
+            <field name="arch" type="xml">
+                <form string="Branch Request" class="o_sale_order">
+                    <header>
+                        <button name="action_approve" string="Confirm" class="btn-primary" type="object"
+                                states="draft"/>
+                        <button name="action_cancel" states="draft" type="object" string="Cancel"/>
+                        <button name="action_draft" states="cancel" type="object" string="Set to Draft"/>
+                        <button name="action_done" states="approve" type="object" string="Close"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,approve,done,cancel"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                        </div>
+                        <div class="oe_title">
+                            <h2>
+                                <field name="name" readonly="1"/>
+                            </h2>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="date_request"/>
+                                <field name="branch_id"/>
+                            </group>
+                            <group>
+                                <field name="user_id" readonly="1"/>
+                                <field name="tender_id"/>
+                                <field name="company_id" invisible="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Products" name="request_line">
+                                <field name="request_line" widget="section_and_note_one2many" mode="tree"
+                                       attrs="{'readonly': [('state', '!=', 'draft')]}">
+                                    <form>
+                                        <group>
+                                            <field name="sequence" invisible="1"/>
+                                            <field name="company_id" invisible="1"/>
+                                            <field name="product_uom_category_id" invisible="1"/>
+                                            <field name="product_updatable" invisible="1"/>
+                                            <field name="product_id"/>
+                                            <field name="product_template_id" string="Product"/>
+                                            <field name="name" widget="section_and_note_text" optional="show"/>
+                                            <field name="product_qty"/>
+                                            <field name="product_uom"/>
+                                        </group>
+                                    </form>
+                                    <tree string="Branch Request Lines" editable="bottom">
+                                        <field name="sequence" widget="handle"/>
+                                        <!--  We do not display the type because we don't want the user to be bothered with that information if he has no section or note.  -->
+                                        <field name="product_uom_category_id" invisible="1"/>
+                                        <field name="product_updatable" invisible="1"/>
+                                        <field name="product_id" options="{'no_open': True}" force_save="1"
+                                               domain="[('purchase_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"
+                                               widget="product_configurator"/>
+                                        <field name="product_template_id" string="Product" invisible="1"
+                                               attrs="{ 'readonly': [('product_updatable', '=', False)], }"
+                                               options="{'no_open': True}"
+                                               domain="[('purchase_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"
+                                               widget="product_configurator"/>
+                                        <field name="name" widget="section_and_note_text" optional="show"/>
+                                        <field name="product_qty"/>
+                                        <field name="product_uom" force_save="1" string="UoM"
+                                               context="{'company_id': parent.company_id}" groups="uom.group_uom"
+                                               options="{'no_open': True}" optional="show"/>
+                                    </tree>
+                                </field>
+                                <group name="note_group" col="6">
+                                    <group colspan="4">
+                                        <field name="note" nolabel="1" placeholder="Terms and conditions..."/>
+                                    </group>
+                                    <div class="oe_clear"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_purchase_branch_req_calender" model="ir.ui.view">
+            <field name="name">purchase.branch.req.calendar</field>
+            <field name="model">purchase.branch.req</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <calendar string="Calendar View" date_start="date_request" color="branch_id" hide_time="true"
+                          event_limit="5">
+                    <field name="name"/>
+                    <field name="branch_id"/>
+                </calendar>
+            </field>
+        </record>
+
+        <record id="view_purchase_branch_req_pivot" model="ir.ui.view">
+            <field name="name">purchase.branch.req.pivot</field>
+            <field name="model">purchase.branch.req</field>
+            <field name="arch" type="xml">
+                <pivot string="Branch Request" display_quantity="True">
+                    <field name="branch_id" type="row"/>
+                    <field name="date_request" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record id="view_purchase_branch_req_filter" model="ir.ui.view">
+            <field name="name">purchase.branch.req.filter</field>
+            <field name="model">purchase.branch.req</field>
+            <field name="arch" type="xml">
+                <search string="Search Branch Request">
+                    <field name="name" string="Request" filter_domain="['|', ('name', 'ilike', self)]"/>
+                    <field name="branch_id"/>
+                    <field name="user_id"/>
+                    <field name="tender_id"/>
+                    <separator/>
+                    <filter name="draft" string="Draft" domain="[('state', '=', 'draft')]"/>
+                    <filter name="approved" string="Approved" domain="[('state', '=', 'approved')]"/>
+                    <filter name="done" string="Done" domain="[('state', '=', 'done')]"/>
+                    <separator/>
+                    <filter name="date_request" string="Request Date" date="date_request"/>
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter string="Branch" name="branch" domain="[]" context="{'group_by': 'branch_id'}"/>
+                        <filter string="Purchase Representative" name="representative" domain="[]"
+                                context="{'group_by': 'user_id'}"/>
+                        <filter string="Request Date" name="date_request" domain="[]"
+                                context="{'group_by': 'date_request'}"/>
+                        <filter string="Tender" name="tender_id" domain="[]"
+                                context="{'group_by': 'tender_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="purchase_branch_req_tree" model="ir.ui.view">
+            <field name="name">purchase.branch.req.tree</field>
+            <field name="model">purchase.branch.req</field>
+            <field name="arch" type="xml">
+                <tree string="Branch Request" multi_edit="1"
+                      decoration-muted="state=='cancel'" decoration-info="state == 'draft'">
+                    <field name="name" string="Reference" readonly="1"/>
+                    <field name="date_request" optional="show"/>
+                    <field name="branch_id" readonly="1"/>
+                    <field name="tender_id"/>
+                    <field name="company_id" readonly="1" options="{'no_create': True}"
+                           groups="base.group_multi_company" optional="show"/>
+                    <field name="user_id" optional="show"/>
+                    <field name="state" optional="show"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="purchase_branch_req" model="ir.actions.act_window">
+            <field name="name">Branch Request</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.branch.req</field>
+            <field name="view_mode">tree,form,pivot,graph</field>
+            <field name="view_id" ref="purchase_branch_req_tree"/>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="search_view_id" ref="view_purchase_branch_req_filter"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a Branch Purchase Request
+                </p>
+                <p>
+                    The Branch Purchase Request contains the history of the discussion
+                    you had with your Branches.
+                </p>
+            </field>
+        </record>
+
+        <menuitem action="purchase_branch_req"
+                  id="menu_purchase_branch_req"
+                  parent="purchase.menu_procurement_management"/>
+    </data>
+</odoo>

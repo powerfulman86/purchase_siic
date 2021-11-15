@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="tender_bidline_form_view" model="ir.ui.view">
+            <field name="name">tender_bidline.form.view</field>
+            <field name="model">purchase.tender.order.line</field>
+            <field name="arch" type="xml">
+                <form string="Tender Lines" create="0" edit="0">
+                    <sheet>
+                        <group>
+                            <field name="order_id"/>
+                            <field name="name"/>
+                            <field name="partner_id" string="Vendor"/>
+                            <field name="product_id"/>
+                            <field name="price_unit"/>
+                            <field name="product_qty"/>
+                            <field name="price_subtotal"/>
+                            <field name="price_subtotal"/>
+                            <field name="status"/>
+                            <field name="tender_id" invisible="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="tender_bidline_tree_view" model="ir.ui.view">
+            <field name="name">tender.bidline.tree.view</field>
+            <field name="model">purchase.tender.order.line</field>
+            <field name="arch" type="xml">
+                <tree string="Tender Lines" create="0" edit="0" decoration-danger="status=='cancel'"
+                      decoration-success="status=='confirm'">
+                    <field name="order_id"/>
+                    <field name="name"/>
+                    <field name="partner_id" string="Vendor"/>
+                    <field name="product_id"/>
+                    <field name="price_unit"/>
+                    <field name="product_qty"/>
+                    <field name="price_subtotal"/>
+                    <field name="price_subtotal"/>
+                    <field name="status"/>
+                    <field name="tender_id" invisible="1"/>
+                    <button name="action_update_qty" icon="fa-shopping-cart" type="object"/>
+                    <button name="action_confirm" icon="fa-check" type="object"/>
+                    <button name="action_cancel" icon="fa-times" type="object"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="tender_po_bidline_search_view" model="ir.ui.view">
+            <field name="name">tender.po.bidline.search.view</field>
+            <field name="model">purchase.tender.order.line</field>
+            <field name="arch" type="xml">
+                <search string="Tender Lines Search View">
+                    <filter name="hide_cancelled_lines" string="Hide cancelled Lines"
+                            domain="[('state', '!=', 'cancel')]"/>
+                    <group expand="0" string="Group By">
+                        <filter name="tender" string="Tender" domain="[]" context="{'group_by':'tender_id'}"/>
+                        <filter name="order" string="Purchase Order" domain="[]" context="{'group_by':'order_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="purchase_order_line_pivot_custom">
+            <field name="name">purchase.order.line.pivot.custom</field>
+            <field name="model">purchase.tender.order.line</field>
+            <field name="arch" type="xml">
+                <pivot string="Tender Lines" display_quantity="True">
+                    <field name="product_id" type="row"/>
+                    <field name="partner_id" type="col"/>
+                    <field name="product_qty" type="measure"/>
+                    <field name="price_unit" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record id="action_po_bidline_action" model="ir.actions.act_window">
+            <field name="name">Tender Lines</field>
+            <field name="res_model">purchase.tender.order.line</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,pivot,form</field>
+            <field name="domain">[('state','!=','cancel'),('tender_id', '!=', False),
+                ('tender_state', '=', 'bid_selection')]
+            </field>
+            <field name="context">
+                {'search_default_hide_cancelled_lines':1,'search_default_tender':1,'search_default_order':1}
+            </field>
+            <field name="view_id" ref="tender_bidline_tree_view"/>
+            <field name="search_view_id" ref="tender_po_bidline_search_view"/>
+        </record>
+
+        <menuitem id="bidlines_menu" name="Analyze Multiple Tenders" action="action_po_bidline_action"
+                  parent="purchase.menu_procurement_management"/>
+    </data>
+</odoo>

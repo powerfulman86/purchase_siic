@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--Tender Type-->
+        <record id="purchase_tender_type_tree_view" model="ir.ui.view">
+            <field name="name">sh.purchase.tender.type.tree.view</field>
+            <field name="model">purchase.tender.type</field>
+            <field name="arch" type="xml">
+                <tree string="Purchase Tender Type" editable="bottom">
+                    <field name="name"/>
+                    <field name="notes"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_purchase_tender_type">
+            <field name="name">Purchase Tender Type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.tender.type</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+                <field class="oe_view_nocontent_create">
+                    Create Purchase Tender Type.
+                </field>
+            </field>
+        </record>
+
+        <menuitem id="purchase_tender_type_menu"
+                  name="Purchase Tender Type"
+                  parent="purchase.menu_purchase_config"
+                  action="action_purchase_tender_type"/>
+
+        <!--Tender-->
+        <record id="purchase_tender_search_view" model="ir.ui.view">
+            <field name="name">sh.purchase.tender.search.view</field>
+            <field name="model">purchase.tender</field>
+            <field name="arch" type="xml">
+                <search string="Purchase Tender">
+                    <field name="name"/>
+                    <field name="tender_user_id"/>
+                    <field name="tender_type"/>
+                    <field name="vendor_id"/>
+                    <field name="tender_deadline"/>
+                    <field name="order_date"/>
+                    <field name="delivery_date"/>
+                    <field name="source"/>
+                    <field name="state"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Purchase Tender Number" name="tender" domain="[]"
+                                context="{'group_by':'name'}"/>
+                        <filter string="Purchase Representative" name="user_id" domain="[]"
+                                context="{'group_by':'tender_user_id'}"/>
+                        <filter string="Purchase Tender Type" name="tender_type" domain="[]"
+                                context="{'group_by':'tender_type'}"/>
+                        <filter string="Vendor" name="vendor" domain="[]" context="{'group_by':'vendor_id'}"/>
+                        <filter string="Purchase Tender Deadline" name="deadline" domain="[]"
+                                context="{'group_by':'tender_deadline'}"/>
+                        <filter string="Purchase Tender Order Date" name="order_date" domain="[]"
+                                context="{'group_by':'order_date'}"/>
+                        <filter string="Purchase Tender Delivery Date" name="delivery_date" domain="[]"
+                                context="{'group_by':'delivery_date'}"/>
+                        <filter string="Status" name="status" domain="[]" context="{'group_by':'state'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="purchase_tender_form_view" model="ir.ui.view">
+            <field name="name">sh.purchase.tender.form.view</field>
+            <field name="model">purchase.tender</field>
+            <field name="arch" type="xml">
+                <form string="Purchase Tender">
+                    <header>
+                        <button name="action_confirm" string="Confirm" type="object" class="oe_highlight"
+
+                                attrs="{'invisible':[('state','in',['confirm','bid_selection','closed','cancel','req_ver_dept','verified','gmapproved'])]}"/>
+                        <button name="action_new_quotation" string="New Quotation" type="object" class="oe_highlight"
+                                attrs="{'invisible':[('state','in',['draft','bid_selection','closed','req_ver_dept','verified','gmapproved','cancel'])]}"/>
+                        <button name="action_validate" string="Validate" type="object" class="oe_highlight"
+                                attrs="{'invisible':[('state','in',['draft','bid_selection','req_ver_dept','verified','gmapproved','closed','cancel'])]}"/>
+                        <button name="action_analyze_rfq" string="Supplier Analysis" type="object" class="oe_highlight"
+                                attrs="{'invisible':[('state','in',['draft','confirm','closed','cancel'])]}"/>
+                        <button name="action_req_ver_dept" string="Request verfication by Dept" type="object"
+                                class="oe_highlight"
+                                attrs="{'invisible':[('state','in',['draft','confirm','req_ver_dept','verified','gmapproved','closed','cancel'])]}"/>
+                        <button name="action_dept_verified" string="Approve(Dept)" type="object" class="oe_highlight"
+                                attrs="{'invisible':[('state','in',['draft','confirm','bid_selection','verified','gmapproved','closed','cancel'])]}"/>
+                        <button name="action_gm_approved" string="GM Approve" type="object"
+                                attrs="{'invisible':[('state','in',['draft','confirm','bid_selection','req_ver_dept','gmapproved','closed'])]}"/>
+                        <button name="action_done" string="Done" type="object"
+                                attrs="{'invisible':[('state','in',['draft','confirm','bid_selection','req_ver_dept','verified','closed','cancel'])]}"/>
+                        <button name="action_cancel" string="Cancel" type="object" class="btn btn-primary"
+                                attrs="{'invisible':[('state','in',['cancel','req_ver_dept','closed'])]}"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="draft,confirm,bid_selection,req_ver_dept,verified,gmapproved"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button type="object" name="action_view_quote" class="oe_stat_button"
+                                    icon="fa-pencil-square-o" attrs="{'invisible':[('state','in',['draft'])]}">
+                                <field name="rfq_count" widget="statinfo" string="Quotations"/>
+                            </button>
+                            <button type="object" name="action_view_order" class="oe_stat_button"
+                                    icon="fa-pencil-square-o" attrs="{'invisible':[('state','in',['draft'])]}">
+                                <field name="order_count" widget="statinfo" string="Selected Orders"/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="tender_user_id"
+                                       attrs="{'readonly':[('state','in',['closed','cancel'])]}"/>
+                                <field name="tender_type" widget="selection"
+                                       attrs="{'readonly':[('state','in',['closed','cancel'])]}"/>
+                                <field name="vendor_id" invisible="1"/>
+                                <field name="partner_ids" attrs="{'readonly':[('state','in',['closed','cancel'])]}"
+                                       widget="many2many_tags"/>
+                                <field name="tender_deadline"
+                                       attrs="{'readonly':[('state','in',['closed','cancel'])]}"/>
+                            </group>
+                            <group>
+                                <field name="order_date" attrs="{'readonly':[('state','in',['closed','cancel'])]}"/>
+                                <field name="delivery_date"
+                                       attrs="{'readonly':[('state','in',['closed','cancel'])]}"/>
+                                <field name="source" placeholder="e.g. PO0001"
+                                       attrs="{'readonly':[('state','in',['closed','cancel'])]}"/>
+                                <!--                                <field name="purchase_request_id"-->
+                                <!--                                       attrs="{'readonly':[('state','in',['closed','cancel'])]}"/>-->
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Products">
+                                <field name="purchase_tender_line_ids"
+                                       attrs="{'readonly':[('state','in',['closed','cancel'])]}">
+                                    <form string="Purchase Tender">
+                                        <group>
+                                            <group>
+                                                <field name="product_id"/>
+                                                <field name="qty"/>
+                                                <field name="ordered_qty"/>
+                                                <field name="price_unit"/>
+                                            </group>
+                                        </group>
+                                    </form>
+                                    <tree editable="bottom" decoration-primary="qty &gt; ordered_qty"
+                                          decoration-success="ordered_qty &gt;= qty">
+                                        <field name="product_id"/>
+                                        <field name="qty"/>
+                                        <field name="ordered_qty"/>
+                                        <field name="price_unit"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Department Notes">
+                                <field name="dept_note"
+                                       attrs="{'readonly':[('state','in',['closed','draft','confirm','bid_selection','verified','gmapproved','cancel'])]}"/>
+                            </page>
+                        </notebook>
+                        <field name="notes" string="Terms &amp; Conditions" class="oe_inline"
+                               placeholder="Define your terms and conditions ..."
+                               attrs="{'readonly':[('state','in',['closed','cancel'])]}"/>
+                        <div class="oe_clear"/>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="purchase_tender_tree_view" model="ir.ui.view">
+            <field name="name">sh.purchase.tender.tree.view</field>
+            <field name="model">purchase.tender</field>
+            <field name="arch" type="xml">
+                <tree string="Purchase Tender">
+                    <field name="name"/>
+                    <field name="tender_user_id"/>
+                    <field name="tender_type"/>
+                    <field name="vendor_id"/>
+                    <field name="tender_deadline"/>
+                    <field name="order_date"/>
+                    <field name="delivery_date"/>
+                    <field name="source"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="purchase_tender_action" model="ir.actions.act_window">
+            <field name="name">Purchase Tender</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.tender</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to Create New Purchase Tender.
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="purchase_tender_menu"
+                  name="Purchase Tender"
+                  parent="purchase.menu_procurement_management"
+                  action="purchase_tender_action"/>
+
+    </data>
+</odoo>

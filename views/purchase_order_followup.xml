@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_purchase_order_followup_form" model="ir.ui.view">
+            <field name="name">purchase.order.followup.form</field>
+            <field name="model">purchase.order.followup</field>
+            <field name="arch" type="xml">
+                <form string="Order Followup" class="o_sale_order">
+                    <header>
+                        <button name="action_approve" string="Confirm" class="btn-primary" type="object"
+                                states="draft"/>
+                        <button name="action_cancel" states="draft" type="object" string="Cancel"/>
+                        <button name="action_draft" states="cancel" type="object" string="Set to Draft"/>
+                        <button name="action_done" states="approve" type="object" string="Close"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,approve,done,cancel"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                        </div>
+                        <div class="oe_title">
+                            <span class="o_form_label">Purchase Order Follow-Up</span>
+                            <h2>
+                                <field name="name" readonly="1"/>
+                            </h2>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="date_followup"/>
+                                <field name="purchase_id" options="{'no_create': True}" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="date_order" readonly="1" />
+                                <field name="partner_id" options="{'no_create': True}"/>
+                            </group>
+                            <group >
+                                <field name="payment_term_id"/>
+                                <field name="payment_code" invisible="1"/>
+                                <field name="amount_total"/>
+                                <field name="company_id" invisible="1"/>
+                                <field name="currency_id"/>
+                                <field name="currency_rate"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Payment" attrs="{'invisible':[('payment_code', 'not in', ('in-advance','lc'))]}">
+                                <group string="In Advance" attrs="{'invisible':[('payment_code', '!=', 'in-advance')]}">
+                                    <group>
+                                        <field name="adv_trans_date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="adv_amount" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="bank_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                    </group>
+                                </group>
+                                <group string="LC" attrs="{'invisible':[('payment_code', '!=', 'lc')]}">
+                                    <group>
+                                        <field name="lc_no" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="lc_total" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="lc_issue_bank" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="lc_corress_bank" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="lc_state" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="hs_code" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                    </group>
+                                    <group>
+                                        <field name="lc_date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="lc_expire_date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="lc_latest_shipment_date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="lc_extend_validity" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="lc_latest_extend_validity" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Shipping" >
+                                <group>
+                                    <group>
+                                        <field name="shipment_status" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="shipment_date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="shipment_amount" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="date_arrival" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                    </group>
+                                    <group>
+                                        <field name="date_bank_doc_arrival" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="date_bank_doc_receive" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="date_bank_doc_deliver_alex" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                    </group>
+                                    <group>
+                                        <field name="date_receipt_tranzit" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="date_receipt_fact" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="date_delivery_note" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="L.G">
+                                <group>
+                                    <group string="Base">
+                                        <field name="lg_no" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="lg_bank_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="lg_type" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="lg_validity" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                    </group>
+                                    <group string="Amount">
+                                        <field name="lg_amount" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="lg_currency_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="lg_currency_rate" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                    </group>
+                                    <group string="Others">
+                                        <field name="lg_valid_for" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="lg_submitted_from" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="lg_extension_for" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Fines" >
+                                <group >
+                                    <group string="Storage">
+                                        <field name="storage_fees" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="storage_currency_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="storage_currency_rate" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                    </group>
+                                    <group string="Demmurage">
+                                        <field name="demurrage_fees" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="demurrage_currency_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="demurrage_currency_rate" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                    </group>
+                                    <group string="Delay">
+                                        <field name="delay_penalty" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="penalty_currency_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="penalty_currency_rate" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="penalty_percentage" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                    </group>
+                                    <group string="Others">
+                                        <field name="payment_fees" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="committed_decision" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                        <field name="committed_decision_date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                    </group>
+                                </group>
+
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_purchase_order_followup_clendar" model="ir.ui.view">
+            <field name="name">purchase.order.followup.calendar</field>
+            <field name="model">purchase.order.followup</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <calendar string="Calendar View" date_start="date_followup" color="partner_id" hide_time="true"
+                          event_limit="5">
+                    <field name="currency_id" invisible="1"/>
+                    <field name="name"/>
+                    <field name="amount_total" widget="monetary"/>
+                    <field name="partner_id"/>
+                </calendar>
+            </field>
+        </record>
+
+        <record id="view_purchase_order_followup_pivot" model="ir.ui.view">
+            <field name="name">purchase.order.followup.pivot</field>
+            <field name="model">purchase.order.followup</field>
+            <field name="arch" type="xml">
+                <pivot string="Order Followup" display_quantity="True">
+                    <field name="partner_id" type="row"/>
+                    <field name="amount_total" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record id="view_purchase_order_followup_filter" model="ir.ui.view">
+            <field name="name">purchase.order.followup.filter</field>
+            <field name="model">purchase.order.followup</field>
+            <field name="arch" type="xml">
+                <search string="Search Order Followup">
+                    <field name="name" string="Followup"
+                           filter_domain="['|', '|', ('name', 'ilike', self), ('partner_id', 'child_of', self)]"/>
+                    <field name="partner_id" operator="child_of"/>
+                    <field name="user_id"/>
+                    <filter name="my_followups" string="My Followups" domain="[('user_id', '=', uid)]"/>
+                    <separator/>
+                    <filter name="draft" string="Draft" domain="[('state', '=', 'draft')]"/>
+                    <filter name="approved" string="Approved" domain="[('state', '=', 'approved')]"/>
+                    <filter name="done" string="Done" domain="[('state', '=', 'done')]"/>
+                    <separator/>
+                    <filter name="date_followup" string="Followup Date" date="date_followup"/>
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter string="Vendor" name="vendor" domain="[]" context="{'group_by': 'partner_id'}"/>
+                        <filter string="Purchase Representative" name="representative" domain="[]"
+                                context="{'group_by': 'user_id'}"/>
+                        <filter string="Followup Date" name="date_followup" domain="[]"
+                                context="{'group_by': 'date_followup'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="purchase_order_followup_tree" model="ir.ui.view">
+            <field name="name">purchase.order.followup.tree</field>
+            <field name="model">purchase.order.followup</field>
+            <field name="arch" type="xml">
+                <tree string="Order Followup" multi_edit="1"
+                      decoration-muted="state=='cancel'" decoration-info="state == 'draft'">
+                    <field name="name" string="Reference" readonly="1"/>
+                    <field name="date_followup" optional="show"/>
+                    <field name="partner_id" readonly="1"/>
+                    <field name="purchase_id" readonly="1"/>
+                    <field name="company_id" readonly="1" options="{'no_create': True}"
+                           groups="base.group_multi_company" optional="show"/>
+                    <field name="user_id" optional="show"/>
+                    <field name="amount_total" sum="Total amount" widget="monetary" optional="show"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="state" optional="show"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="purchase_order_followup_action" model="ir.actions.act_window">
+            <field name="name">Order Followup</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order.followup</field>
+            <field name="view_mode">tree,kanban,form,pivot,graph,calendar,activity</field>
+            <field name="view_id" ref="purchase_order_followup_tree"/>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="search_view_id" ref="view_purchase_order_followup_filter"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create an Order Followup
+                </p>
+                <p>
+                    The order Followup contains the history of the discussion
+                    you had with your vendor.
+                </p>
+            </field>
+        </record>
+
+        <menuitem action="purchase_order_followup_action" id="menu_purchase_order_followup_action"
+                  parent="purchase.menu_procurement_management" sequence="6"/>
+    </data>
+</odoo>

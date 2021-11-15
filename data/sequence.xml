@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+         <record id="purchase_tender_order_seq" model="ir.sequence">
+			<field name="name">Purchase Tender Order Sequence</field>
+			<field name="code">purchase.tender.order</field>
+            <field name="prefix">PTO</field>
+            <field name="padding">4</field>
+		</record>
+
+        <record id="purchase_tender_seq" model="ir.sequence">
+			<field name="name">Purchase Tender Sequence</field>
+			<field name="code">purchase.tender</field>
+            <field name="prefix">TE</field>
+            <field name="padding">4</field>
+		</record>
+
+        <record id="purchase_branch_request" model="ir.sequence">
+            <field name="name">purchase.branch.req.seq</field>
+            <field name="code">purchase.branch.req</field>
+            <field name="prefix">BR</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="purchase_order_followup" model="ir.sequence">
+            <field name="name">purchase.order.followup.seq</field>
+            <field name="code">purchase.order.followup</field>
+            <field name="prefix">PF</field>
+            <field name="padding">5</field>
+        </record>
+
+    </data>
+</odoo>

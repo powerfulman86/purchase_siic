@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="siic_payment_term_form" model="ir.ui.view">
+            <field name="name">account.payment.term</field>
+            <field name="model">account.payment.term</field>
+            <field name="inherit_id" ref="account.view_payment_term_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="payment_code"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="siic_payment_term_tree" model="ir.ui.view">
+            <field name="name">account.payment.term</field>
+            <field name="model">account.payment.term</field>
+            <field name="inherit_id" ref="account.view_payment_term_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="payment_code"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <menuitem action="account.action_payment_term_form"
+            id="menu_action_payment_term_form_purchase" parent="purchase.menu_purchase_config" sequence="0"/>
+
+    </data>
+</odoo>
