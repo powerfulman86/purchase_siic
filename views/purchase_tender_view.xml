@@ -97,6 +97,10 @@
                     </header>
                     <sheet>
                         <div class="oe_button_box" name="button_box">
+                            <button type="object" name="action_view_branch_request" class="oe_stat_button"
+                                    icon="fa-pencil-square-o" attrs="{'invisible':[('state','in',['draft'])]}">
+                                <field name="branch_request_count" widget="statinfo" string="Branch Requests"/>
+                            </button>
                             <button type="object" name="action_view_quote" class="oe_stat_button"
                                     icon="fa-pencil-square-o" attrs="{'invisible':[('state','in',['draft'])]}">
                                 <field name="rfq_count" widget="statinfo" string="Quotations"/>

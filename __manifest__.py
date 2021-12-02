@@ -22,6 +22,8 @@
         'views/purchase_order_followup.xml',
         'wizard/update_qty_wizard_view.xml',
         'wizard/purchase_order_wizard_view.xml',
+        'report/report_purchase_tender_template.xml',
+        'report/report_branch_request_template.xml',
     ],
     'images': ['static/description/icon.png'],
     'license': 'AGPL-3',

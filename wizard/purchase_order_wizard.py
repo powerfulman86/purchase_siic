@@ -23,7 +23,6 @@ class PurchaseOrderWizard(models.TransientModel):
                         'tender_id': order_line.tender_id.id,
                         'user_id': self.env.user.id,
                         'date_planned': order_line.date_planned,
-                        'selected_order': True,
                     })
                     order_ids.append(purchase_order_id.id)
                     line_vals = {
@@ -31,7 +30,6 @@ class PurchaseOrderWizard(models.TransientModel):
                         'product_id': order_line.product_id.id,
                         'name': order_line.product_id.name,
                         'date_planned': order_line.date_planned,
-                        'status': 'draft',
                         'product_uom': order_line.product_id.uom_id.id,
                         'product_qty': order_line.product_qty,
                         'price_unit': order_line.price_unit,
@@ -44,7 +42,7 @@ class PurchaseOrderWizard(models.TransientModel):
                     'res_model': 'purchase.order',
                     'view_type': 'form',
                     'view_mode': 'tree,form',
-                    'domain': [('id', 'in', order_ids), ('selected_order', '=', True)],
+                    'domain': [('id', 'in', order_ids)],
                     'target': 'current'
                 }
             else:
@@ -62,7 +60,6 @@ class PurchaseOrderWizard(models.TransientModel):
                         'user_id': self.env.user.id,
                         'date_order': fields.Datetime.now(),
                         'tender_id': tender_id,
-                        'selected_order': True,
                     }
                     order_id = self.env['purchase.order'].create(order_vals)
                     order_ids.append(order_id.id)
@@ -74,7 +71,6 @@ class PurchaseOrderWizard(models.TransientModel):
                                 'product_id': order_line.product_id.id,
                                 'name': order_line.product_id.name,
                                 'date_planned': order_line.date_planned,
-                                'status': 'draft',
                                 'product_uom': order_line.product_id.uom_id.id,
                                 'product_qty': order_line.product_qty,
                                 'price_unit': order_line.price_unit,
@@ -88,6 +84,6 @@ class PurchaseOrderWizard(models.TransientModel):
                     'res_model': 'purchase.order',
                     'view_type': 'form',
                     'view_mode': 'tree,form',
-                    'domain': [('id', 'in', order_ids), ('selected_order', '=', True)],
+                    'domain': [('id', 'in', order_ids)],
                     'target': 'current'
                 }

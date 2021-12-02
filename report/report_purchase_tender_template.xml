@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_purchasetender">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <t t-set="o" t-value="o.with_context(lang=o.vendor_id.lang)"/>
+                    <div class="page">
+                        <div class="oe_structure"/>
+                        <h2 t-if="o.state == 'draft'">Purchase Tender #
+                            <span t-field="o.name"/>
+                        </h2>
+                        <h2 t-if="o.state in ['confirm']">Purchase Tender #
+                            <span t-field="o.name"/>
+                        </h2>
+                        <h2 t-if="o.state == 'cancel'">Cancelled Purchase Tender #
+                            <span t-field="o.name"/>
+                        </h2>
+                        <h2 t-if="o.state in ['bid_selection']">Bid Selection Purchase Tender #
+                            <span t-field="o.name"/>
+                        </h2>
+                        <h2 t-if="o.state == 'closed'">Closed Purchase Tender #
+                            <span t-field="o.name"/>
+                        </h2>
+
+                        <div id="informations" class="row mt32 mb32">
+                            <div t-if="o.name" class="col-3 bm-2">
+                                <strong>Tedner Reference:</strong>
+                                <p t-field="o.name" class="m-0"/>
+                            </div>
+                            <div t-if="o.user_id" class="col-3 bm-2">
+                                <strong>Purchase Representative:</strong>
+                                <p t-field="o.user_id" class="m-0"/>
+                            </div>
+                            <div t-if="o.tender_type" class="col-3 bm-2">
+                                <strong>Purchase Tender Type:</strong>
+                                <p t-field="o.tender_type" class="m-0"/>
+                            </div>
+                            <div t-if="o.vendor_id" class="col-3 bm-2">
+                                <strong>Vendor:</strong>
+                                <p t-field="o.vendor_id" class="m-0"/>
+                            </div>
+                            <div t-if="o.tender_deadline" class="col-3 bm-2">
+                                <strong>Tender Deadline:</strong>
+                                <p t-field="o.tender_deadline" class="m-0"/>
+                            </div>
+                            <div t-if="o.order_date" class="col-3 bm-2">
+                                <strong>Ordering Date:</strong>
+                                <p t-field="o.order_date" class="m-0"/>
+                            </div>
+                            <div t-if="o.delivery_date" class="col-3 bm-2">
+                                <strong>Delivery Date:</strong>
+                                <p t-field="o.delivery_date" class="m-0"/>
+                            </div>
+                            <div t-if="o.source" class="col-3 bm-2">
+                                <strong>Source Document:</strong>
+                                <p t-field="o.source" class="m-0"/>
+                            </div>
+                        </div>
+                        <table class="table table-sm o_main_table">
+                            <thead>
+                                <tr>
+                                    <th class="text-left">
+                                        <strong>Product</strong>
+                                    </th>
+                                    <th class="text-right">
+                                        <strong>Quantity</strong>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="o.purchase_tender_line_ids" t-as="line">
+                                    <td class="text-left">
+                                        <span t-field="line.product_id"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="line.qty"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <t t-if="o.notes">
+                            <p t-field="o.notes"/>
+                        </t>
+                        <div class="oe_structure"/>
+                    </div>
+
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <report
+            string="Purchase Tender"
+            id="action_report_purchase_tender"
+            model="purchase.tender"
+            report_type="qweb-pdf"
+            name="purchase_siic.report_purchasetender"
+            file="purchase_siic.report_purchasetender"
+    />
+</odoo>

@@ -11,8 +11,7 @@
                                 states="draft"/>
                         <button name="action_cancel" states="draft" type="object" string="Cancel"/>
                         <button name="action_draft" states="cancel" type="object" string="Set to Draft"/>
-                        <button name="action_done" states="approve" type="object" string="Close"/>
-                        <field name="state" widget="statusbar" statusbar_visible="draft,approve,done,cancel"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,approve,cancel"/>
                     </header>
                     <sheet>
                         <div class="oe_button_box" name="button_box">
@@ -24,6 +23,7 @@
                         </div>
                         <group>
                             <group>
+                                <field name="internal_reference"/>
                                 <field name="date_request"/>
                                 <field name="branch_id"/>
                             </group>
@@ -96,6 +96,7 @@
                 <calendar string="Calendar View" date_start="date_request" color="branch_id" hide_time="true"
                           event_limit="5">
                     <field name="name"/>
+                    <field name="internal_reference"/>
                     <field name="branch_id"/>
                 </calendar>
             </field>
@@ -118,6 +119,7 @@
             <field name="arch" type="xml">
                 <search string="Search Branch Request">
                     <field name="name" string="Request" filter_domain="['|', ('name', 'ilike', self)]"/>
+                    <field name="internal_reference" string="Branch Number" filter_domain="['|', ('internal_reference', 'ilike', self)]"/>
                     <field name="branch_id"/>
                     <field name="user_id"/>
                     <field name="tender_id"/>
@@ -148,6 +150,7 @@
                 <tree string="Branch Request" multi_edit="1"
                       decoration-muted="state=='cancel'" decoration-info="state == 'draft'">
                     <field name="name" string="Reference" readonly="1"/>
+                    <field name="internal_reference" string="Internal Reference" readonly="1"/>
                     <field name="date_request" optional="show"/>
                     <field name="branch_id" readonly="1"/>
                     <field name="tender_id"/>

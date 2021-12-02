@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--    <report string="Purchase Branch Request"-->
+<!--            id="action_report_purchase_branch_request"-->
+<!--            model="purchase.branch.req"-->
+<!--            report_type="qweb-pdf"-->
+<!--            name="purchase_siic.report_purchase_branch_request"-->
+<!--            file="purchase_siic.report_purchase_branch_request"/>-->
+</odoo>

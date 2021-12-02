@@ -34,6 +34,7 @@ class PurchaseTender(models.Model):
     notes = fields.Text("Terms & Conditions", track_visibility="onchange")
     purchase_tender_line_ids = fields.One2many('purchase.tender.line', 'tender_id',
                                                string='Purchase Tender Line')
+    branch_request_count = fields.Integer("Branch Requests", compute='_get_branch_request_count')
 
     def unlink(self):
         for order in self:
@@ -79,6 +80,16 @@ class PurchaseTender(models.Model):
                     rec.order_count = len(purchase_orders.ids)
                 else:
                     rec.order_count = 0
+
+    def _get_branch_request_count(self):
+        if self:
+            for rec in self:
+                branch_requests = self.env['purchase.branch.req'].sudo().search(
+                    [('tender_id', '=', rec.id), ('state', 'not in', ['cancel'])])
+                if branch_requests:
+                    rec.branch_request_count = len(branch_requests.ids)
+                else:
+                    rec.branch_request_count = 0
 
     def action_confirm(self):
         if self:
@@ -226,6 +237,18 @@ class PurchaseTender(models.Model):
             'target': 'current'
         }
 
+    def action_view_branch_request(self):
+        return {
+            'name': _('Branch Requests'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'purchase.branch.req',
+            'view_type': 'form',
+            'view_mode': 'tree,form',
+            'res_id': self.id,
+            'domain': [('tender_id', '=', self.id)],
+            'target': 'current'
+        }
+
 
 class PurchaseTenderLine(models.Model):
     _name = 'purchase.tender.line'
@@ -245,7 +268,7 @@ class PurchaseTenderLine(models.Model):
         if self:
             for rec in self:
                 order_qty = 0.0
-                purchase_order_lines = self.env['purchase.order.line'].sudo().search(
+                purchase_order_lines = self.env['purchase.tender.order.line'].sudo().search(
                     [('product_id', '=', rec.product_id.id), ('tender_id', '=', rec.tender_id.id),
                      ('order_id.selected_order', '=', True), ('order_id.state', 'in', ['purchase'])])
                 for line in purchase_order_lines:

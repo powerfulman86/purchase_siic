@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-15 08:53+0000\n"
-"PO-Revision-Date: 2021-11-15 08:53+0000\n"
+"POT-Creation-Date: 2021-11-15 10:10+0000\n"
+"PO-Revision-Date: 2021-11-15 10:10+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,22 +18,22 @@ msgstr ""
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__lc_corress_bank
 msgid " Correspondent Bank"
-msgstr ""
+msgstr "البنك المراسل"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__lc_issue_bank
 msgid " Issue Bank"
-msgstr ""
+msgstr "البنك المصدر"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_order_followup_form
 msgid "<span class=\"o_form_label\">Purchase Order Follow-Up</span>"
-msgstr ""
+msgstr "متابعة اوامر الشراء"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_order_form
 msgid "<span>Purchase Tender Order</span>"
-msgstr ""
+msgstr "عروض اسعار المناقصه"
 
 #. module: purchase_siic
 #: model:ir.model.fields,help:purchase_siic.field_purchase_tender_order_line__product_type
@@ -109,17 +109,17 @@ msgstr ""
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_order_form
 msgid "Add a note"
-msgstr ""
+msgstr "اضافة ملاحظات"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_order_form
 msgid "Add a product"
-msgstr ""
+msgstr "اضافة منتج"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_order_form
 msgid "Add a section"
-msgstr ""
+msgstr "اضافة قسم"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__adv_amount
@@ -127,12 +127,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__lg_amount
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_order_followup_form
 msgid "Amount"
-msgstr ""
+msgstr "القيمة"
 
 #. module: purchase_siic
 #: model:ir.ui.menu,name:purchase_siic.bidlines_menu
 msgid "Analyze Multiple Tenders"
-msgstr ""
+msgstr "كشوف التفريغ"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_order_form
@@ -162,18 +162,18 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__message_attachment_count
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__message_attachment_count
 msgid "Attachment Count"
-msgstr ""
+msgstr "عدد المرفقات"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__bank_id
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__lg_bank_id
 msgid "Bank"
-msgstr ""
+msgstr "البنك"
 
 #. module: purchase_siic
 #: model:ir.ui.menu,name:purchase_siic.menu_action_res_bank_form_purchase
 msgid "Banks"
-msgstr ""
+msgstr "البنوك"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_order_followup_form
@@ -183,24 +183,24 @@ msgstr ""
 #. module: purchase_siic
 #: model:ir.model.fields.selection,name:purchase_siic.selection__purchase_tender__state__bid_selection
 msgid "Bid Selection"
-msgstr ""
+msgstr "اختيار العطاء"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req__branch_id
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req_line__branch_id
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_branch_req_filter
 msgid "Branch"
-msgstr ""
+msgstr "المصنع"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req_line__request_id
 msgid "Branch Purchase Request"
-msgstr ""
+msgstr "طلب شراء المصنع"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req__request_line
 msgid "Branch Purchase Request Lines"
-msgstr ""
+msgstr "بنود طلب الشراء للمصنع"
 
 #. module: purchase_siic
 #: model:ir.actions.act_window,name:purchase_siic.purchase_branch_req
@@ -209,12 +209,12 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_branch_req_form
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_branch_req_pivot
 msgid "Branch Request"
-msgstr ""
+msgstr "طلب المصنع"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_branch_req_form
 msgid "Branch Request Lines"
-msgstr ""
+msgstr "بنود امر الشراء"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_order_calendar
@@ -245,7 +245,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_branch_req_form
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_order_followup_form
 msgid "Cancel"
-msgstr ""
+msgstr "الغاء"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__cancel_lines
@@ -259,7 +259,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:purchase_siic.selection__purchase_tender__state__cancel
 #: model:ir.model.fields.selection,name:purchase_siic.selection__purchase_tender_order__state__cancel
 msgid "Cancelled"
-msgstr ""
+msgstr "ملغي"
 
 #. module: purchase_siic
 #: code:addons/purchase_siic/models/purchase_tender_order.py:0
@@ -280,24 +280,24 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:purchase_siic.sh_update_qty_wizard_form_view
 #, python-format
 msgid "Change Quantity"
-msgstr ""
+msgstr "تغيير الكمية"
 
 #. module: purchase_siic
 #: model_terms:ir.actions.act_window,help:purchase_siic.purchase_tender_action
 msgid "Click to Create New Purchase Tender."
-msgstr ""
+msgstr "مناقصة الشراء"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_order_form
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_branch_req_form
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_order_followup_form
 msgid "Close"
-msgstr ""
+msgstr "اغلاق"
 
 #. module: purchase_siic
 #: model:ir.model.fields.selection,name:purchase_siic.selection__purchase_tender__state__closed
 msgid "Closed"
-msgstr ""
+msgstr "مغلق"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_account_payment_term__payment_code
@@ -330,18 +330,18 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_branch_req_form
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_order_followup_form
 msgid "Confirm"
-msgstr ""
+msgstr "تاكيد"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__date_approve
 msgid "Confirmation Date"
-msgstr ""
+msgstr "تاريخ التاكيد"
 
 #. module: purchase_siic
 #: model:ir.model.fields.selection,name:purchase_siic.selection__purchase_order_followup__lc_state__confirmed
 #: model:ir.model.fields.selection,name:purchase_siic.selection__purchase_tender__state__confirm
 msgid "Confirmed"
-msgstr ""
+msgstr "تم التاكيد"
 
 #. module: purchase_siic
 #: model:ir.model.fields,help:purchase_siic.field_purchase_branch_req_line__product_uom_category_id
@@ -355,22 +355,22 @@ msgstr ""
 #. module: purchase_siic
 #: model_terms:ir.actions.act_window,help:purchase_siic.action_purchase_tender_type
 msgid "Create Purchase Tender Type."
-msgstr ""
+msgstr "انشاء نوع مناقصه جديد"
 
 #. module: purchase_siic
 #: model_terms:ir.actions.act_window,help:purchase_siic.purchase_branch_req
 msgid "Create a Branch Purchase Request"
-msgstr ""
+msgstr "انشاء طلب مصنع جديد"
 
 #. module: purchase_siic
 #: model_terms:ir.actions.act_window,help:purchase_siic.purchase_tender_order
 msgid "Create a Tender Order"
-msgstr ""
+msgstr "انشاء امر شراء مناقصه جديد"
 
 #. module: purchase_siic
 #: model_terms:ir.actions.act_window,help:purchase_siic.purchase_order_followup_action
 msgid "Create an Order Followup"
-msgstr ""
+msgstr "متابعة طلب الشراء"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req__create_uid
@@ -387,7 +387,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_type__create_uid
 #: model:ir.model.fields,field_description:purchase_siic.field_update_qty__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "تم الانشاء بواسطة"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req__create_date
@@ -404,7 +404,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_type__create_date
 #: model:ir.model.fields,field_description:purchase_siic.field_update_qty__create_date
 msgid "Created on"
-msgstr ""
+msgstr "تم الانشاء في"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__currency_id
@@ -415,7 +415,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__currency_id
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order_line__currency_id
 msgid "Currency"
-msgstr ""
+msgstr "العملة"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__currency_rate
@@ -425,7 +425,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__storage_currency_rate
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__currency_rate
 msgid "Currency Rate"
-msgstr ""
+msgstr "اسعار العملات"
 
 #. module: purchase_siic
 #: model:ir.model.fields,help:purchase_siic.field_purchase_branch_req__access_url
@@ -436,43 +436,43 @@ msgstr ""
 #: model:ir.model.fields,help:purchase_siic.field_purchase_tender__access_url
 #: model:ir.model.fields,help:purchase_siic.field_purchase_tender_order__access_url
 msgid "Customer Portal URL"
-msgstr ""
+msgstr "عنوان URL لبوابة العميل"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__lc_date
 msgid "Date"
-msgstr ""
+msgstr "التاريخ"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__adv_trans_date
 msgid "Date Of Transfer"
-msgstr ""
+msgstr "تاريخ التحويل"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_form_view
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_order_form
 msgid "Define your terms and conditions ..."
-msgstr ""
+msgstr "الشروط والأحكام الخاصة"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_order_followup_form
 msgid "Delay"
-msgstr ""
+msgstr "التأخير"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__delay_penalty
 msgid "Delay Penalty"
-msgstr ""
+msgstr "غرامة التاخير"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__date_bank_doc_deliver_alex
 msgid "Deliver Docs.Alex.Sector Date"
-msgstr ""
+msgstr "تاريخ تسليم الوثائق"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__delivery_date
 msgid "Delivery Date"
-msgstr ""
+msgstr "تاريخ التسليم"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__date_delivery_note
@@ -485,27 +485,27 @@ msgstr ""
 #: model:ir.ui.menu,name:purchase_siic.menu_purchase_delivery_time
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_delivery_time_tree
 msgid "Delivery Time"
-msgstr ""
+msgstr "وقت التسليم"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_order_followup_form
 msgid "Demmurage"
-msgstr ""
+msgstr "غرامة التأخير"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__demurrage_fees
 msgid "Demurrage Fees"
-msgstr ""
+msgstr "رسوم غرامات التأخير"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_form_view
 msgid "Department Notes"
-msgstr ""
+msgstr "ملاحظات القسم"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__dept_note
 msgid "Department note"
-msgstr ""
+msgstr "مذكرة القسم"
 
 #. module: purchase_siic
 #: model:ir.model.fields,help:purchase_siic.field_purchase_order_followup__date_order
@@ -514,13 +514,13 @@ msgstr ""
 msgid ""
 "Depicts the date where the Quotation should be validated and converted into "
 "a purchase order."
-msgstr ""
+msgstr "أمر الشراء"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req_line__name
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order_line__name
 msgid "Description"
-msgstr ""
+msgstr "الوصف"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req__display_name
@@ -537,17 +537,17 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_type__display_name
 #: model:ir.model.fields,field_description:purchase_siic.field_update_qty__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "اسم العرض"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order_line__display_type
 msgid "Display Type"
-msgstr ""
+msgstr "نوع العرض"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__date_bank_doc_arrival
 msgid "Documents Arrival-Bank Date"
-msgstr ""
+msgstr "تاريخ وصول المستندات للبنك"
 
 #. module: purchase_siic
 #: model:ir.model.fields.selection,name:purchase_siic.selection__purchase_branch_req__state__done
@@ -556,7 +556,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_branch_req_filter
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_order_followup_filter
 msgid "Done"
-msgstr ""
+msgstr "تم"
 
 #. module: purchase_siic
 #: model:ir.model.fields.selection,name:purchase_siic.selection__purchase_branch_req__state__draft
@@ -566,7 +566,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_branch_req_filter
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_order_followup_filter
 msgid "Draft"
-msgstr ""
+msgstr "مسوده"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__dest_address_id
@@ -581,33 +581,33 @@ msgstr ""
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__lc_expire_date
 msgid "Expire Date"
-msgstr ""
+msgstr "تاريخ انتهاء الصلاحية"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__lc_extend_validity
 msgid "Extention OF LC Validity"
-msgstr ""
+msgstr "تمديد صلاحية خطاب الضمان"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__lc_latest_extend_validity
 msgid "Extention OF Latest Date OF Shipment"
-msgstr ""
+msgstr "تمديد اخر تاريخ للشحن"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order__final_guarantee
 msgid "Final Guarantee"
-msgstr ""
+msgstr "خطاب الضمان النهائى"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_order_followup_form
 msgid "Fines"
-msgstr ""
+msgstr "الغرامات"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order__follow_up
 #: model_terms:ir.ui.view,arch_db:purchase_siic.siic_purchase_order
 msgid "Follow-Up"
-msgstr ""
+msgstr "المتابعة"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req__message_follower_ids
@@ -618,7 +618,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__message_follower_ids
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__message_follower_ids
 msgid "Followers"
-msgstr ""
+msgstr "المتابعون"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req__message_channel_ids
@@ -629,7 +629,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__message_channel_ids
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__message_channel_ids
 msgid "Followers (Channels)"
-msgstr ""
+msgstr "القنوات"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req__message_partner_ids
@@ -640,12 +640,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__message_partner_ids
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__message_partner_ids
 msgid "Followers (Partners)"
-msgstr ""
+msgstr "الشركاء"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_order_followup_filter
 msgid "Followup"
-msgstr ""
+msgstr "المتابعة"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__date_followup
@@ -672,24 +672,24 @@ msgstr ""
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_form_view
 msgid "GM Approve"
-msgstr ""
+msgstr "موافقة مدير الادارة"
 
 #. module: purchase_siic
 #: model:ir.model.fields.selection,name:purchase_siic.selection__purchase_tender__state__gmapproved
 msgid "GM Approved"
-msgstr ""
+msgstr "تمت موافقة مدير الادارة"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_order_wizard_form_view
 msgid "Genarate Purchase Order"
-msgstr ""
+msgstr "انشاء امر الشراء"
 
 #. module: purchase_siic
 #: model:ir.actions.act_window,name:purchase_siic.action_purchase_order_wizard
 #: model:ir.actions.act_window,name:purchase_siic.generate_purchase_order_action
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_order_wizard_form_view
 msgid "Generate Purchase Order"
-msgstr ""
+msgstr "انشاء امر الشراء"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_wizard__group_by_partner
@@ -700,7 +700,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_order_followup_filter
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_tender_order_filter
 msgid "Group By"
-msgstr ""
+msgstr "تجميع بواسطة"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_order_wizard_form_view
@@ -711,7 +711,7 @@ msgstr ""
 #: model:ir.actions.act_window,name:purchase_siic.action_purchase_guarantee_type
 #: model:ir.ui.menu,name:purchase_siic.menu_purchase_guarantee_type
 msgid "Guarantee Type"
-msgstr ""
+msgstr "نوع خطاب الضمان"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__hs_code
@@ -806,13 +806,13 @@ msgstr ""
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_order_followup_form
 msgid "In Advance"
-msgstr ""
+msgstr "مقدما"
 
 #. module: purchase_siic
 #: code:addons/purchase_siic/models/purchase_tender_order.py:0
 #, python-format
 msgid "In order to delete a Tender order, you must cancel it first."
-msgstr ""
+msgstr "لحذف امر شراء مناقصه , يجب الغاؤه اولا"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__incoterm_id
@@ -932,12 +932,12 @@ msgstr ""
 #. module: purchase_siic
 #: model:ir.model.fields.selection,name:purchase_siic.selection__purchase_order__order_type__in
 msgid "Local"
-msgstr ""
+msgstr "محلي"
 
 #. module: purchase_siic
 #: model:ir.model.fields.selection,name:purchase_siic.selection__purchase_tender_order__state__done
 msgid "Locked"
-msgstr ""
+msgstr "مغلق"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req__message_main_attachment_id
@@ -953,7 +953,7 @@ msgstr ""
 #. module: purchase_siic
 #: model:res.groups,name:purchase_siic.purchase_tender_manager
 msgid "Manager"
-msgstr ""
+msgstr "مدير"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req__medium_id
@@ -1040,7 +1040,7 @@ msgstr "جديد"
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_form_view
 msgid "New Quotation"
-msgstr ""
+msgstr "عرض سعر جديد"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req__activity_date_deadline
@@ -1051,7 +1051,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__activity_date_deadline
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__activity_date_deadline
 msgid "Next Activity Deadline"
-msgstr ""
+msgstr "الموعد النهائي للنشاط التالي"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req__activity_summary
@@ -1062,7 +1062,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__activity_summary
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__activity_summary
 msgid "Next Activity Summary"
-msgstr ""
+msgstr "ملخص النشاط التالي"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req__activity_type_id
@@ -1073,23 +1073,23 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__activity_type_id
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__activity_type_id
 msgid "Next Activity Type"
-msgstr ""
+msgstr "نوع النشاط التالي"
 
 #. module: purchase_siic
 #: model:ir.model.fields.selection,name:purchase_siic.selection__purchase_order_followup__shipment_status__notidentical
 msgid "Non-Identical"
-msgstr ""
+msgstr "غير متطابق"
 
 #. module: purchase_siic
 #: model:ir.model.fields.selection,name:purchase_siic.selection__purchase_order__final_guarantee__notexist
 msgid "Not Exist"
-msgstr ""
+msgstr "لا يوجد"
 
 #. module: purchase_siic
 #: model:ir.model.fields.selection,name:purchase_siic.selection__purchase_tender_order_line__display_type__line_note
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_order_form
 msgid "Note"
-msgstr ""
+msgstr "ملاحظات"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_delivery_time__notes
@@ -1099,7 +1099,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_type__notes
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_order_form
 msgid "Notes"
-msgstr ""
+msgstr "الملاحظات"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req__message_needaction_counter
@@ -1110,7 +1110,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__message_needaction_counter
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__message_needaction_counter
 msgid "Number of Actions"
-msgstr ""
+msgstr "عدد الإجراءات"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req__message_has_error_counter
@@ -1121,7 +1121,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__message_has_error_counter
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__message_has_error_counter
 msgid "Number of errors"
-msgstr ""
+msgstr "عدد الأخطاء"
 
 #. module: purchase_siic
 #: model:ir.model.fields,help:purchase_siic.field_purchase_branch_req__message_needaction_counter
@@ -1132,7 +1132,7 @@ msgstr ""
 #: model:ir.model.fields,help:purchase_siic.field_purchase_tender__message_needaction_counter
 #: model:ir.model.fields,help:purchase_siic.field_purchase_tender_order__message_needaction_counter
 msgid "Number of messages which requires an action"
-msgstr ""
+msgstr "عدد الرسائل التي تتطلب اتخاذ إجراء"
 
 #. module: purchase_siic
 #: model:ir.model.fields,help:purchase_siic.field_purchase_branch_req__message_has_error_counter
@@ -1143,7 +1143,7 @@ msgstr ""
 #: model:ir.model.fields,help:purchase_siic.field_purchase_tender__message_has_error_counter
 #: model:ir.model.fields,help:purchase_siic.field_purchase_tender_order__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr ""
+msgstr "عدد الرسائل التي بها خطأ في التسليم"
 
 #. module: purchase_siic
 #: model:ir.model.fields,help:purchase_siic.field_purchase_branch_req__message_unread_counter
@@ -1154,13 +1154,13 @@ msgstr ""
 #: model:ir.model.fields,help:purchase_siic.field_purchase_tender__message_unread_counter
 #: model:ir.model.fields,help:purchase_siic.field_purchase_tender_order__message_unread_counter
 msgid "Number of unread messages"
-msgstr ""
+msgstr "عدد الرسائل غير المقروءة"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_order_tender_view_search
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_tender_order_filter
 msgid "Order"
-msgstr ""
+msgstr "الأمر"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__date_order
@@ -1169,7 +1169,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_order_tender_view_search
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_tender_order_filter
 msgid "Order Date"
-msgstr ""
+msgstr "تاريخ امر الشراء"
 
 #. module: purchase_siic
 #: model:ir.actions.act_window,name:purchase_siic.purchase_order_followup_action
@@ -1178,17 +1178,17 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_order_followup_form
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_order_followup_pivot
 msgid "Order Followup"
-msgstr ""
+msgstr "متابعة طلب الشراء"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__order_line
 msgid "Order Lines"
-msgstr ""
+msgstr "بنود الامر"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order__order_no
 msgid "Order Number"
-msgstr ""
+msgstr "رقم الأمر"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__name
@@ -1199,38 +1199,38 @@ msgstr ""
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_line__ordered_qty
 msgid "Ordered Quantities"
-msgstr ""
+msgstr "الكميات المطلوبة"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__order_date
 msgid "Ordering Date"
-msgstr ""
+msgstr "تاريخ الطرح"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_order_form
 msgid "Other Information"
-msgstr ""
+msgstr "معلومات اخرى"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_order_followup_form
 msgid "Others"
-msgstr ""
+msgstr "اخرى"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__partner_id
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order_line__partner_id
 msgid "Partner"
-msgstr ""
+msgstr "الشريك"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_order_followup_form
 msgid "Payment"
-msgstr ""
+msgstr "الدفع"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__payment_fees
 msgid "Payment Fees"
-msgstr ""
+msgstr "رسوم الدفع"
 
 #. module: purchase_siic
 #: model:ir.model,name:purchase_siic.model_account_payment_term
@@ -1246,12 +1246,12 @@ msgstr "شروط السداد"
 #: model:ir.ui.menu,name:purchase_siic.menu_purchase_payment_type
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_payment_type_tree
 msgid "Payment Type"
-msgstr ""
+msgstr "طريقة الدفع"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__penalty_percentage
 msgid "Penalty Percentage"
-msgstr ""
+msgstr "نسبة الغرامة"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req__access_url
@@ -1270,34 +1270,34 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order_line__product_id
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_branch_req_form
 msgid "Product"
-msgstr ""
+msgstr "المنتج"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req_line__product_template_id
 msgid "Product Template"
-msgstr ""
+msgstr "نموذج المنتج"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order_line__product_type
 msgid "Product Type"
-msgstr ""
+msgstr "نوع المنتج"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_line__product_uom_id
 msgid "Product Unit of Measure"
-msgstr ""
+msgstr "وحدة قياس المنتج"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_form_view
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_order_form
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_branch_req_form
 msgid "Products"
-msgstr ""
+msgstr "المنتجات"
 
 #. module: purchase_siic
 #: model:ir.model,name:purchase_siic.model_purchase_branch_req
 msgid "Purchase Branch Request"
-msgstr ""
+msgstr "طلب المصنع"
 
 #. module: purchase_siic
 #: model:ir.model,name:purchase_siic.model_purchase_branch_req_line
@@ -1307,12 +1307,12 @@ msgstr ""
 #. module: purchase_siic
 #: model:ir.model,name:purchase_siic.model_purchase_delivery_time
 msgid "Purchase Delivery Time"
-msgstr ""
+msgstr "ميعاد التسليم"
 
 #. module: purchase_siic
 #: model:ir.model,name:purchase_siic.model_purchase_guarantee_type
 msgid "Purchase Guarantee Type"
-msgstr ""
+msgstr "نوع خطاب الضمان"
 
 #. module: purchase_siic
 #: model:ir.model,name:purchase_siic.model_purchase_order
@@ -1324,7 +1324,7 @@ msgstr "أمر شراء"
 #. module: purchase_siic
 #: model:ir.model,name:purchase_siic.model_purchase_order_followup
 msgid "Purchase Order Followup"
-msgstr ""
+msgstr "متابعة طلب الشراء"
 
 #. module: purchase_siic
 #: model:ir.model,name:purchase_siic.model_purchase_order_line
@@ -1336,7 +1336,7 @@ msgstr "بند أمر الشراء"
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_order_form
 msgid "Purchase Order Lines"
-msgstr ""
+msgstr "بنود أمر الشراء"
 
 #. module: purchase_siic
 #: model:ir.model,name:purchase_siic.model_purchase_order_wizard
@@ -1348,18 +1348,18 @@ msgstr ""
 #: code:addons/purchase_siic/wizard/purchase_order_wizard.py:0
 #, python-format
 msgid "Purchase Orders"
-msgstr ""
+msgstr "أوامر الشراء"
 
 #. module: purchase_siic
 #: model:ir.model,name:purchase_siic.model_purchase_payment_type
 msgid "Purchase Payment Type"
-msgstr ""
+msgstr "طريقة الدفع"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req__user_id
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__user_id
 msgid "Purchase Person"
-msgstr ""
+msgstr "الشخص المسئول"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__user_id
@@ -1369,12 +1369,12 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_order_followup_filter
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_tender_order_filter
 msgid "Purchase Representative"
-msgstr ""
+msgstr "مندوب الشراء"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__purchase_request_id
 msgid "Purchase Request"
-msgstr ""
+msgstr "طلب الشراء"
 
 #. module: purchase_siic
 #: model:ir.actions.act_window,name:purchase_siic.purchase_tender_action
@@ -1392,27 +1392,27 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_search_view
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_tree_view
 msgid "Purchase Tender"
-msgstr ""
+msgstr "مناقصة الشراء"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_search_view
 msgid "Purchase Tender Deadline"
-msgstr ""
+msgstr "الموعد النهائى لتقديم الطلبات"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_search_view
 msgid "Purchase Tender Delivery Date"
-msgstr ""
+msgstr "تاريخ تسليم المناقصه"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__purchase_tender_line_ids
 msgid "Purchase Tender Line"
-msgstr ""
+msgstr "بنود مناقصة الشراء"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_search_view
 msgid "Purchase Tender Number"
-msgstr ""
+msgstr "رقم مناقصة الشراء"
 
 #. module: purchase_siic
 #: model:ir.model,name:purchase_siic.model_purchase_tender_order
@@ -1422,12 +1422,13 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_order_view_activity
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_order_view_tree
 msgid "Purchase Tender Order"
-msgstr ""
+msgstr "طلب مناقصة الشراء"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_search_view
 msgid "Purchase Tender Order Date"
-msgstr ""
+msgstr "تاريخ طلب مناقصة الشراء
+"
 
 #. module: purchase_siic
 #: model:ir.actions.act_window,name:purchase_siic.action_purchase_tender_type
@@ -1436,12 +1437,12 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_search_view
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_type_tree_view
 msgid "Purchase Tender Type"
-msgstr ""
+msgstr "نوع مناقصة الشراء"
 
 #. module: purchase_siic
 #: model:ir.model,name:purchase_siic.model_purchase_tender_line
 msgid "Purchase tender Line"
-msgstr ""
+msgstr "بنود مناقصة الشراء"
 
 #. module: purchase_siic
 #: model:ir.model.fields,help:purchase_siic.field_purchase_tender_order__dest_address_id
@@ -1456,17 +1457,17 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order_line__product_qty
 #: model:ir.model.fields,field_description:purchase_siic.field_update_qty__sh_qty
 msgid "Quantity"
-msgstr ""
+msgstr "الكمية"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_order_form
 msgid "Quantity:"
-msgstr ""
+msgstr "الكمية"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_form_view
 msgid "Quotations"
-msgstr ""
+msgstr "عروض الاسعار"
 
 #. module: purchase_siic
 #: model:ir.model.fields,help:purchase_siic.field_purchase_order_followup__currency_rate
@@ -1476,12 +1477,12 @@ msgstr ""
 #: model:ir.model.fields,help:purchase_siic.field_purchase_order_followup__storage_currency_rate
 #: model:ir.model.fields,help:purchase_siic.field_purchase_tender_order__currency_rate
 msgid "Ratio between the purchase order currency and the company currency"
-msgstr ""
+msgstr "النسبة بين عملة أمر الشراء وعملة الشركة"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__date_planned
 msgid "Receipt Date"
-msgstr ""
+msgstr "تاريخ الأستلام"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__date_receipt_fact
@@ -1491,14 +1492,14 @@ msgstr ""
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__date_receipt_tranzit
 msgid "Receipt Goods-Tranzit Date"
-msgstr ""
+msgstr "تاريخ استلام البضائع - ترانزيت"
 
 #. module: purchase_siic
 #: code:addons/purchase_siic/models/purchase_tender.py:0
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__rfq_count
 #, python-format
 msgid "Received Quotations"
-msgstr ""
+msgstr "العروض المستلمه"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__date_bank_doc_receive
@@ -1510,7 +1511,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_order_followup_tree
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_order_view_tree
 msgid "Reference"
-msgstr ""
+msgstr "المرجع الداخلي"
 
 #. module: purchase_siic
 #: model:ir.model.fields,help:purchase_siic.field_purchase_tender_order__origin
@@ -1530,7 +1531,7 @@ msgstr ""
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__tender_user_id
 msgid "Representative"
-msgstr ""
+msgstr "المسئول"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_branch_req_filter
@@ -1542,7 +1543,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req_line__date_request
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_branch_req_filter
 msgid "Request Date"
-msgstr ""
+msgstr "تاريخ الطلب"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req__name
@@ -1552,12 +1553,12 @@ msgstr ""
 #. module: purchase_siic
 #: model:ir.model.fields.selection,name:purchase_siic.selection__purchase_tender__state__req_ver_dept
 msgid "Request Verification"
-msgstr ""
+msgstr "طلب التحقق"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_form_view
 msgid "Request verfication by Dept"
-msgstr ""
+msgstr "طلب التحقق بواسطة الادارة"
 
 #. module: purchase_siic
 #: model:ir.model.fields.selection,name:purchase_siic.selection__purchase_order__final_guarantee__reserved
@@ -1567,7 +1568,7 @@ msgstr ""
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_order_form
 msgid "Reset To Draft"
-msgstr ""
+msgstr "التحويل الى مسوده"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req__activity_user_id
@@ -1578,7 +1579,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__activity_user_id
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__activity_user_id
 msgid "Responsible User"
-msgstr ""
+msgstr "المستخدم المسئول"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req__message_has_sms_error
@@ -1600,28 +1601,28 @@ msgstr ""
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_branch_req_filter
 msgid "Search Branch Request"
-msgstr ""
+msgstr "بحث بالمصنع الطالب"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_order_followup_filter
 msgid "Search Order Followup"
-msgstr ""
+msgstr "بحث متابعة طلبات الشراء"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_order_tender_view_search
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_tender_order_filter
 msgid "Search Purchase Tender Order"
-msgstr ""
+msgstr "بحث في طلب مناقصة الشراء"
 
 #. module: purchase_siic
 #: model:ir.model.fields.selection,name:purchase_siic.selection__purchase_tender_order_line__display_type__line_section
 msgid "Section"
-msgstr ""
+msgstr "القسم"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_order_form
 msgid "Section Name (eg. Products, Services)"
-msgstr ""
+msgstr "اسم القسم (مثل المنتجات والخدمات)"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req__access_token
@@ -1632,7 +1633,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__access_token
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__access_token
 msgid "Security Token"
-msgstr ""
+msgstr "رمز الأمان"
 
 #. module: purchase_siic
 #: code:addons/purchase_siic/models/purchase_tender.py:0
@@ -1642,34 +1643,34 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_form_view
 #, python-format
 msgid "Selected Orders"
-msgstr ""
+msgstr "أوامر مختارة"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req_line__sequence
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order_line__sequence
 msgid "Sequence"
-msgstr ""
+msgstr "تسلسل"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_branch_req_form
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_order_followup_form
 msgid "Set to Draft"
-msgstr ""
+msgstr "تعيين إلى مسودة"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__shipment_amount
 msgid "Shipment Amount"
-msgstr ""
+msgstr "مبلغ الشحنه"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__shipment_date
 msgid "Shipment Date"
-msgstr ""
+msgstr "تاريخ الشحن"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_order_followup_form
 msgid "Shipping"
-msgstr ""
+msgstr "الشحن"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_order_tender_view_search
@@ -1683,7 +1684,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__source_id
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__source_id
 msgid "Source"
-msgstr ""
+msgstr "المصدر"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__source
@@ -1695,7 +1696,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__state
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order_line__status
 msgid "State"
-msgstr ""
+msgstr "الحاله"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req__state
@@ -1706,7 +1707,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order_line__state
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_search_view
 msgid "Status"
-msgstr ""
+msgstr "الحالة"
 
 #. module: purchase_siic
 #: model:ir.model.fields,help:purchase_siic.field_purchase_branch_req__activity_state
@@ -1726,38 +1727,38 @@ msgstr ""
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_order_followup_form
 msgid "Storage"
-msgstr ""
+msgstr "تخزين"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__storage_fees
 msgid "Storage Fees"
-msgstr ""
+msgstr "رسوم التخزين"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__lg_submitted_from
 msgid "Submitted From"
-msgstr ""
+msgstr "مقدم من"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order_line__price_subtotal
 msgid "Subtotal"
-msgstr ""
+msgstr "المجموع الفرعي"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_form_view
 msgid "Supplier Analysis"
-msgstr ""
+msgstr "تحليل الموردين"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order_line__price_tax
 msgid "Tax"
-msgstr ""
+msgstr "الضريبة"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__amount_tax
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order_line__taxes_id
 msgid "Taxes"
-msgstr ""
+msgstr "الضرائب"
 
 #. module: purchase_siic
 #: model:ir.model.fields,help:purchase_siic.field_purchase_tender_order_line__display_type
@@ -1770,12 +1771,12 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:purchase_siic.tender_po_bidline_search_view
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_branch_req_filter
 msgid "Tender"
-msgstr ""
+msgstr "المناقصة"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__tender_deadline
 msgid "Tender Deadline"
-msgstr ""
+msgstr "الموعد النهائي لتقديم العطاءات"
 
 #. module: purchase_siic
 #: code:addons/purchase_siic/models/purchase_tender.py:0
@@ -1785,7 +1786,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:purchase_siic.tender_bidline_tree_view
 #, python-format
 msgid "Tender Lines"
-msgstr ""
+msgstr "خطوط المناقصة"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.tender_po_bidline_search_view
@@ -1796,7 +1797,7 @@ msgstr ""
 #: model:ir.actions.act_window,name:purchase_siic.purchase_tender_order
 #: model:ir.ui.menu,name:purchase_siic.menu_tender_order
 msgid "Tender Orders"
-msgstr ""
+msgstr "أوامر شراء المناقصة"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req__tender_state
@@ -1805,33 +1806,33 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__tender_state
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order_line__tender_state
 msgid "Tender State"
-msgstr ""
+msgstr "حالة المناقصة"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__tender_type
 msgid "Tender Type"
-msgstr ""
+msgstr "نوع المناقصة"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__notes
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_form_view
 msgid "Terms & Conditions"
-msgstr ""
+msgstr "البنود والظروف"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__notes
 msgid "Terms and Conditions"
-msgstr ""
+msgstr "البنود والظروف"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req__note
 msgid "Terms and conditions"
-msgstr ""
+msgstr "البنود والظروف"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_branch_req_form
 msgid "Terms and conditions..."
-msgstr ""
+msgstr "البنود والظروف"
 
 #. module: purchase_siic
 #: model_terms:ir.actions.act_window,help:purchase_siic.purchase_branch_req
@@ -1858,7 +1859,7 @@ msgstr ""
 #: code:addons/purchase_siic/models/purchase_order_followup.py:0
 #, python-format
 msgid "There is Already Order Follow-up For this purchase order"
-msgstr ""
+msgstr "توجد بالفعل متابعة لطلب الشراء هذا"
 
 #. module: purchase_siic
 #: model:ir.model.fields,help:purchase_siic.field_purchase_branch_req__campaign_id
@@ -1892,36 +1893,36 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_order_tender_view_search
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_tender_order_filter
 msgid "Today Activities"
-msgstr ""
+msgstr "أنشطة اليوم"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__amount_total
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__amount_total
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order_line__price_total
 msgid "Total"
-msgstr ""
+msgstr "المجموع"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req_line__product_uom_qty
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order_line__product_uom_qty
 msgid "Total Quantity"
-msgstr ""
+msgstr "الكمية الإجمالية"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_order_view_tree
 msgid "Total Untaxed amount"
-msgstr ""
+msgstr "إجمالي المبلغ غير الخاضع للضريبة"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_order_followup_tree
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_order_view_tree
 msgid "Total amount"
-msgstr ""
+msgstr "المبلغ الإجمالي"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order__order_type
 msgid "Type"
-msgstr ""
+msgstr "النوع"
 
 #. module: purchase_siic
 #: model:ir.model.fields,help:purchase_siic.field_purchase_branch_req__activity_exception_decoration
@@ -1932,29 +1933,29 @@ msgstr ""
 #: model:ir.model.fields,help:purchase_siic.field_purchase_tender__activity_exception_decoration
 #: model:ir.model.fields,help:purchase_siic.field_purchase_tender_order__activity_exception_decoration
 msgid "Type of the exception activity on record."
-msgstr ""
+msgstr "نوع نشاط الاستثناء المسجل"
 
 #. module: purchase_siic
 #: model:ir.model.fields.selection,name:purchase_siic.selection__purchase_order_followup__lc_state__unconfirmed
 msgid "Un Confirmed"
-msgstr ""
+msgstr "غير مؤكد"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_line__price_unit
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order_line__price_unit
 msgid "Unit Price"
-msgstr ""
+msgstr "سعر الوحدة"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_order_form
 msgid "Unit Price:"
-msgstr ""
+msgstr "سعر الوحدة"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req_line__product_uom
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order_line__product_uom
 msgid "Unit of Measure"
-msgstr ""
+msgstr "وحدة القياس"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req__message_unread
@@ -1965,7 +1966,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__message_unread
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__message_unread
 msgid "Unread Messages"
-msgstr ""
+msgstr "رسائل غير مقروءة"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_branch_req__message_unread_counter
@@ -1976,17 +1977,17 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__message_unread_counter
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__message_unread_counter
 msgid "Unread Messages Counter"
-msgstr ""
+msgstr "عداد الرسائل غير المقروءة"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_order_view_tree
 msgid "Untaxed"
-msgstr ""
+msgstr "غير خاضع للضريبة"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__amount_untaxed
 msgid "Untaxed Amount"
-msgstr ""
+msgstr "القيمة الغير خاضعة للضريبة"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_order_form
@@ -1997,28 +1998,28 @@ msgstr ""
 #. module: purchase_siic
 #: model:ir.model,name:purchase_siic.model_update_qty
 msgid "Update Qty"
-msgstr ""
+msgstr "تحديث الكمية"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__user_id
 #: model:res.groups,name:purchase_siic.purchase_tender_user
 msgid "User"
-msgstr ""
+msgstr "المستخدم"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__lg_valid_for
 msgid "Valid For"
-msgstr ""
+msgstr "صالحه حتى"
 
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_tender_form_view
 msgid "Validate"
-msgstr ""
+msgstr "تحقق"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__lg_validity
 msgid "Validity"
-msgstr ""
+msgstr "الصلاحية"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__partner_id
@@ -2031,27 +2032,27 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_order_followup_filter
 #: model_terms:ir.ui.view,arch_db:purchase_siic.view_purchase_tender_order_filter
 msgid "Vendor"
-msgstr ""
+msgstr "المورد"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__partner_ref
 msgid "Vendor Reference"
-msgstr ""
+msgstr "سجل الموردين"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__partner_ids
 msgid "Vendors"
-msgstr ""
+msgstr "الموردين"
 
 #. module: purchase_siic
 #: model:ir.model.fields.selection,name:purchase_siic.selection__purchase_tender__state__verified
 msgid "Verified"
-msgstr ""
+msgstr "تم التحقق"
 
 #. module: purchase_siic
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_order_followup__date_arrival
 msgid "Vessel/Airplane Arrival Date"
-msgstr ""
+msgstr "تاريخ وصول السفينة / الطائرة"
 
 #. module: purchase_siic
 #: code:addons/purchase_siic/models/purchase_tender_order.py:0
@@ -2075,7 +2076,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender__website_message_ids
 #: model:ir.model.fields,field_description:purchase_siic.field_purchase_tender_order__website_message_ids
 msgid "Website Messages"
-msgstr ""
+msgstr "رسائل الموقع"
 
 #. module: purchase_siic
 #: model:ir.model.fields,help:purchase_siic.field_purchase_branch_req__website_message_ids
@@ -2086,32 +2087,32 @@ msgstr ""
 #: model:ir.model.fields,help:purchase_siic.field_purchase_tender__website_message_ids
 #: model:ir.model.fields,help:purchase_siic.field_purchase_tender_order__website_message_ids
 msgid "Website communication history"
-msgstr ""
+msgstr "سجل اتصال الموقع"
 
 #. module: purchase_siic
 #: model:ir.model.fields,help:purchase_siic.field_purchase_order_followup__partner_id
 #: model:ir.model.fields,help:purchase_siic.field_purchase_tender_order__partner_id
 #: model:ir.model.fields,help:purchase_siic.field_purchase_tender_order_line__partner_id
 msgid "You can find a vendor by its Name, TIN, Email or Internal Reference."
-msgstr ""
+msgstr "يمكنك العثور على بائع بالاسم أو رقم التعريف الضريبي (TIN) أو البريد الإلكتروني أو المرجع الداخلي"
 
 #. module: purchase_siic
 #: code:addons/purchase_siic/models/purchase_branch_req.py:0
 #, python-format
 msgid "You can not delete a Branch Request Which Is Not In Draft State."
-msgstr ""
+msgstr "لا يمكنك حذف طلب فرع ليس في حالة المسودة"
 
 #. module: purchase_siic
 #: code:addons/purchase_siic/models/purchase_order_followup.py:0
 #, python-format
 msgid "You can not delete a Followup Which Is Not In Draft State."
-msgstr ""
+msgstr "لا يمكنك حذف متابعة ليست في حالة المسودة"
 
 #. module: purchase_siic
 #: code:addons/purchase_siic/models/purchase_tender.py:0
 #, python-format
 msgid "You can not delete a Tender Which Is Not In Draft State."
-msgstr ""
+msgstr "لا يمكنك حذف مناقصة ليست في حالة المسودة"
 
 #. module: purchase_siic
 #: code:addons/purchase_siic/models/purchase_tender_order.py:0
@@ -2134,4 +2135,4 @@ msgstr ""
 #. module: purchase_siic
 #: model_terms:ir.ui.view,arch_db:purchase_siic.purchase_guarantee_type_tree
 msgid "guarantee Type"
-msgstr ""
+msgstr "نوع خطاب الضمان"

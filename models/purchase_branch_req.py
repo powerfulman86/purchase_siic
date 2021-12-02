@@ -13,10 +13,10 @@ class PurchaseBranchReq(models.Model):
 
     name = fields.Char(string='Request Reference', required=True, copy=False, readonly=True,
                        states={'draft': [('readonly', False)]}, index=True, default=lambda self: _('New'))
+    internal_reference = fields.Char(string="Reference", required=False, )
     state = fields.Selection([
         ('draft', 'Draft'),
         ('approve', 'Approved'),
-        ('done', 'Done'),
         ('cancel', 'Cancelled'),
     ], string='Status', readonly=True, copy=False, index=True, tracking=3, default='draft')
 
@@ -32,9 +32,8 @@ class PurchaseBranchReq(models.Model):
                                    auto_join=True)
     branch_id = fields.Many2one(comodel_name="res.branch", string="Branch", required=True,
                                 index=True, tracking=1, )
-    tender_id = fields.Many2one('purchase.tender', 'Purchase Tender',
-                                states={'cancel': [('readonly', True)], 'done': [('readonly', True)],
-                                        'draft': [('readonly', True)]})
+    tender_id = fields.Many2one('purchase.tender', 'Purchase Tender', domain=[('state', '=', 'confirm')],
+                                states={'cancel': [('readonly', True)]})
     tender_state = fields.Selection([('draft', 'Draft'), ('confirm', 'Confirmed'), ('bid_selection', 'Bid Selection'),
                                      ('req_ver_dept', 'Request Verification'), ('verified', 'Verified'),
                                      ('gmapproved', 'GM Approved'), ('closed', 'Closed'), ('cancel', 'Cancelled')],
@@ -70,26 +69,31 @@ class PurchaseBranchReq(models.Model):
         return self.write({'state': 'cancel'})
 
     def action_done(self):
+        return self.write({'state': 'done'})
+
+    def action_approve(self):
         # insert lines in tender lines
+        if len(self.request_line) == 0:
+            raise UserError(_('You Must Select Products For Request.'))
+
+        if self.tender_id and self.tender_state != 'confirm':
+            raise UserError(_('Tender Must Be Confirmed Before Processing.'))
+
         if self.tender_id and self.tender_state == 'confirm' and len(self.request_line) != 0:
             for rec in self.request_line:
-                check_product = self.env['purchase.tender.line'].sudo().search([('product_id', '=', rec.product_id)],
-                                                                               limit=1)
+                check_product = self.env['purchase.tender.line'].sudo().search(
+                    [('product_id', '=', rec.product_id.id), ('tender_id', '=', self.tender_id.id)],
+                    limit=1)
                 if len(check_product) != 0:
                     check_product.qty += rec.product_uom_qty
                 else:
                     line_vals = {
                         'tender_id': self.tender_id.id,
                         'product_id': rec.product_id.id,
-                        'name': rec.product_id.name,
-                        'product_uom': rec.product_id.uom_id.id,
-                        'product_qty': rec.product_qty,
+                        'product_uom_id': rec.product_id.uom_id.id,
+                        'qty': rec.product_qty,
                     }
                     self.env['purchase.tender.line'].sudo().create(line_vals)
-
-        return self.write({'state': 'done'})
-
-    def action_approve(self):
         return self.write({'state': 'approve'})
 
 
