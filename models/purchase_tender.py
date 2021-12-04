@@ -103,9 +103,9 @@ class PurchaseTender(models.Model):
                     rec.branch_request_count = 0
 
     def action_confirm(self):
-        # insert lines in tender lines
-        if len(self.purchase_tender_line_ids) == 0:
-            raise UserError(_('You Must Select Products For Tender.'))
+        # # insert lines in tender lines
+        # if len(self.purchase_tender_line_ids) == 0:
+        #     raise UserError(_('You Must Select Products For Tender.'))
 
         if self:
             for rec in self:
