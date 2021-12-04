@@ -2,6 +2,7 @@
 
 
 from odoo import models, fields, api, _
+from odoo.exceptions import AccessError, UserError, ValidationError
 
 
 class PurchaseOrderWizard(models.TransientModel):
@@ -12,8 +13,11 @@ class PurchaseOrderWizard(models.TransientModel):
 
     def action_create_po(self):
         context = dict(self._context or {})
-        purchase_order_line = self.env['purchase.tender.order.line'].sudo().search([('id', 'in', context.get('active_ids'))])
-        if purchase_order_line:
+        purchase_order_line = self.env['purchase.tender.order.line'].sudo().search(
+            [('id', 'in', context.get('active_ids')), ('status', '=', 'confirm')])
+        if not purchase_order_line:
+            raise UserError(_('There are no accepted Products to create purchase order.'))
+        else:
             if not self.group_by_partner:
                 order_ids = []
                 for order_line in purchase_order_line:

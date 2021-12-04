@@ -11,6 +11,8 @@ class PurchaseTender(models.Model):
     _inherit = ['portal.mixin', 'mail.thread', 'mail.activity.mixin', 'utm.mixin']
 
     name = fields.Char('Name', readonly=True, track_visibility="onchange")
+    internal_reference = fields.Char('Reference', readonly=True, states={'draft': [('readonly', False)]}, )
+
     state = fields.Selection([('draft', 'Draft'), ('confirm', 'Confirmed'), ('bid_selection', 'Bid Selection'),
                               ('req_ver_dept', 'Request Verification'), ('verified', 'Verified'),
                               ('gmapproved', 'GM Approved'), ('closed', 'Closed'), ('cancel', 'Cancelled')],
@@ -28,7 +30,7 @@ class PurchaseTender(models.Model):
     tender_deadline = fields.Datetime('Tender Deadline', track_visibility="onchange", default=fields.Date.context_today,
                                       readonly=True, states={'draft': [('readonly', False)]}, )
     announce_date = fields.Date('Announce Date', track_visibility="onchange", default=fields.Date.context_today,
-                             readonly=True, states={'draft': [('readonly', False)]}, )
+                                readonly=True, states={'draft': [('readonly', False)]}, )
     delivery_date = fields.Date('Delivery Date', track_visibility="onchange", default=fields.Date.context_today,
                                 readonly=True, states={'draft': [('readonly', False)]}, )
     source = fields.Char('Source Document', track_visibility="onchange")
@@ -103,10 +105,6 @@ class PurchaseTender(models.Model):
                     rec.branch_request_count = 0
 
     def action_confirm(self):
-        # # insert lines in tender lines
-        # if len(self.purchase_tender_line_ids) == 0:
-        #     raise UserError(_('You Must Select Products For Tender.'))
-
         if self:
             for rec in self:
                 seq = self.env['ir.sequence'].next_by_code('purchase.tender')
@@ -150,7 +148,8 @@ class PurchaseTender(models.Model):
         # insert lines in tender lines
         if len(self.purchase_tender_line_ids) == 0:
             raise UserError(_('You Must Select Products For Tender.'))
-
+        if self.rfq_count == 0:
+            raise UserError(_('You Must Insert Tender Quotation Orders.'))
         if self:
             for rec in self:
                 rec.state = 'bid_selection'

@@ -38,6 +38,7 @@
             <field name="arch" type="xml">
                 <search string="Purchase Tender">
                     <field name="name"/>
+                    <field name="internal_reference"/>
                     <field name="tender_user_id"/>
                     <field name="tender_type"/>
                     <field name="tender_deadline"/>
@@ -74,9 +75,9 @@
                         <button name="action_new_quotation" string="New Quotation" type="object" class="oe_highlight"
                                 states="confirm"/>
                         <button name="action_validate" string="Validate" type="object" class="oe_highlight"
-                                attrs="{'invisible':[('state','in',['draft','bid_selection','req_ver_dept','verified','gmapproved','closed','cancel'])]}"/>
+                                states="confirm"/>
                         <button name="action_analyze_rfq" string="Supplier Analysis" type="object" class="oe_highlight"
-                                attrs="{'invisible':[('state','in',['draft','confirm','closed','cancel'])]}"/>
+                                states="bid_selection"/>
                         <button name="action_req_ver_dept" string="Request verfication by Dept" type="object"
                                 class="oe_highlight"
                                 attrs="{'invisible':[('state','in',['draft','confirm','req_ver_dept','verified','gmapproved','closed','cancel'])]}"/>
@@ -114,12 +115,13 @@
                         </div>
                         <group>
                             <group>
+                                <field name="internal_reference"/>
                                 <field name="tender_user_id"/>
                                 <field name="tender_type" widget="selection"/>
                                 <field name="partner_ids" widget="many2many_tags"/>
-                                <field name="tender_deadline"/>
                             </group>
                             <group>
+                                <field name="tender_deadline"/>
                                 <field name="announce_date"/>
                                 <field name="delivery_date"/>
                                 <field name="source" placeholder="e.g. PO0001"
@@ -185,6 +187,7 @@
             <field name="arch" type="xml">
                 <tree string="Purchase Tender">
                     <field name="name"/>
+                    <field name="internal_reference"/>
                     <field name="tender_user_id"/>
                     <field name="tender_type"/>
                     <field name="tender_deadline"/>

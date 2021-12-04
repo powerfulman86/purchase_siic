@@ -24,9 +24,9 @@
                         </h2>
 
                         <div id="informations" class="row mt32 mb32">
-                            <div t-if="o.name" class="col-3 bm-2">
+                            <div t-if="o.internal_reference" class="col-3 bm-2">
                                 <strong>Tedner Reference:</strong>
-                                <p t-field="o.name" class="m-0"/>
+                                <p t-field="o.internal_reference" class="m-0"/>
                             </div>
                             <div t-if="o.tender_user_id" class="col-3 bm-2">
                                 <strong>Purchase Representative:</strong>
@@ -93,5 +93,5 @@
             report_type="qweb-pdf"
             name="purchase_siic.report_purchasetender"
             file="purchase_siic.report_purchasetender"
-    />
+            print_report_name="'Purchase Tender- %s' % (object.name)"/>
 </odoo>
