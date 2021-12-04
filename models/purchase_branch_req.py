@@ -13,10 +13,12 @@ class PurchaseBranchReq(models.Model):
 
     name = fields.Char(string='Request Reference', required=True, copy=False, readonly=True,
                        states={'draft': [('readonly', False)]}, index=True, default=lambda self: _('New'))
-    internal_reference = fields.Char(string="Reference", required=False, )
+    internal_reference = fields.Char(string="Reference", required=False, readonly=True,
+                                     states={'draft': [('readonly', False)]}, )
     state = fields.Selection([
         ('draft', 'Draft'),
         ('approve', 'Approved'),
+        ('done', 'Done'),
         ('cancel', 'Cancelled'),
     ], string='Status', readonly=True, copy=False, index=True, tracking=3, default='draft')
 
@@ -31,9 +33,9 @@ class PurchaseBranchReq(models.Model):
                                    states={'cancel': [('readonly', True)], 'done': [('readonly', True)]}, copy=True,
                                    auto_join=True)
     branch_id = fields.Many2one(comodel_name="res.branch", string="Branch", required=True,
-                                index=True, tracking=1, )
-    tender_id = fields.Many2one('purchase.tender', 'Purchase Tender', domain=[('state', '=', 'confirm')],
-                                states={'cancel': [('readonly', True)]})
+                                index=True, tracking=1, readonly=True, states={'draft': [('readonly', False)]}, )
+    tender_id = fields.Many2one('purchase.tender', 'Purchase Tender', readonly=True, domain=[('state', '=', 'confirm')],
+                                states={'approve': [('readonly', False)]})
     tender_state = fields.Selection([('draft', 'Draft'), ('confirm', 'Confirmed'), ('bid_selection', 'Bid Selection'),
                                      ('req_ver_dept', 'Request Verification'), ('verified', 'Verified'),
                                      ('gmapproved', 'GM Approved'), ('closed', 'Closed'), ('cancel', 'Cancelled')],
@@ -69,15 +71,12 @@ class PurchaseBranchReq(models.Model):
         return self.write({'state': 'cancel'})
 
     def action_done(self):
-        return self.write({'state': 'done'})
-
-    def action_approve(self):
         # insert lines in tender lines
         if len(self.request_line) == 0:
             raise UserError(_('You Must Select Products For Request.'))
 
-        if self.tender_id and self.tender_state != 'confirm':
-            raise UserError(_('Tender Must Be Confirmed Before Processing.'))
+        if not self.tender_id:
+            raise UserError(_('Purchase Tender Must Be Selected Before Processing.'))
 
         if self.tender_id and self.tender_state == 'confirm' and len(self.request_line) != 0:
             for rec in self.request_line:
@@ -94,6 +93,12 @@ class PurchaseBranchReq(models.Model):
                         'qty': rec.product_qty,
                     }
                     self.env['purchase.tender.line'].sudo().create(line_vals)
+        return self.write({'state': 'done'})
+
+    def action_approve(self):
+        if len(self.request_line) == 0:
+            raise UserError(_('You Must Select Products For Request.'))
+
         return self.write({'state': 'approve'})
 
 

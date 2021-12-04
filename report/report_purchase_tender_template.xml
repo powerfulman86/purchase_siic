@@ -4,7 +4,7 @@
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.external_layout">
-                    <t t-set="o" t-value="o.with_context(lang=o.vendor_id.lang)"/>
+                    <t t-set="o" t-value="o"/>
                     <div class="page">
                         <div class="oe_structure"/>
                         <h2 t-if="o.state == 'draft'">Purchase Tender #
@@ -28,25 +28,21 @@
                                 <strong>Tedner Reference:</strong>
                                 <p t-field="o.name" class="m-0"/>
                             </div>
-                            <div t-if="o.user_id" class="col-3 bm-2">
+                            <div t-if="o.tender_user_id" class="col-3 bm-2">
                                 <strong>Purchase Representative:</strong>
-                                <p t-field="o.user_id" class="m-0"/>
+                                <p t-field="o.tender_user_id" class="m-0"/>
                             </div>
                             <div t-if="o.tender_type" class="col-3 bm-2">
                                 <strong>Purchase Tender Type:</strong>
                                 <p t-field="o.tender_type" class="m-0"/>
                             </div>
-                            <div t-if="o.vendor_id" class="col-3 bm-2">
-                                <strong>Vendor:</strong>
-                                <p t-field="o.vendor_id" class="m-0"/>
-                            </div>
                             <div t-if="o.tender_deadline" class="col-3 bm-2">
                                 <strong>Tender Deadline:</strong>
                                 <p t-field="o.tender_deadline" class="m-0"/>
                             </div>
-                            <div t-if="o.order_date" class="col-3 bm-2">
-                                <strong>Ordering Date:</strong>
-                                <p t-field="o.order_date" class="m-0"/>
+                            <div t-if="o.announce_date" class="col-3 bm-2">
+                                <strong>Announce Date:</strong>
+                                <p t-field="o.announce_date" class="m-0"/>
                             </div>
                             <div t-if="o.delivery_date" class="col-3 bm-2">
                                 <strong>Delivery Date:</strong>

@@ -40,24 +40,22 @@
                     <field name="name"/>
                     <field name="tender_user_id"/>
                     <field name="tender_type"/>
-                    <field name="vendor_id"/>
                     <field name="tender_deadline"/>
-                    <field name="order_date"/>
+                    <field name="announce_date"/>
                     <field name="delivery_date"/>
                     <field name="source"/>
                     <field name="state"/>
                     <group expand="0" string="Group By">
-                        <filter string="Purchase Tender Number" name="tender" domain="[]"
+                        <filter string="Tender Number" name="tender" domain="[]"
                                 context="{'group_by':'name'}"/>
-                        <filter string="Purchase Representative" name="user_id" domain="[]"
+                        <filter string="Representative" name="user_id" domain="[]"
                                 context="{'group_by':'tender_user_id'}"/>
-                        <filter string="Purchase Tender Type" name="tender_type" domain="[]"
+                        <filter string="Tender Type" name="tender_type" domain="[]"
                                 context="{'group_by':'tender_type'}"/>
-                        <filter string="Vendor" name="vendor" domain="[]" context="{'group_by':'vendor_id'}"/>
-                        <filter string="Purchase Tender Deadline" name="deadline" domain="[]"
+                        <filter string="Tender Deadline" name="deadline" domain="[]"
                                 context="{'group_by':'tender_deadline'}"/>
-                        <filter string="Purchase Tender Order Date" name="order_date" domain="[]"
-                                context="{'group_by':'order_date'}"/>
+                        <filter string="Tender Announce Date" name="announce_date" domain="[]"
+                                context="{'group_by':'announce_date'}"/>
                         <filter string="Purchase Tender Delivery Date" name="delivery_date" domain="[]"
                                 context="{'group_by':'delivery_date'}"/>
                         <filter string="Status" name="status" domain="[]" context="{'group_by':'state'}"/>
@@ -72,11 +70,9 @@
             <field name="arch" type="xml">
                 <form string="Purchase Tender">
                     <header>
-                        <button name="action_confirm" string="Confirm" type="object" class="oe_highlight"
-
-                                attrs="{'invisible':[('state','in',['confirm','bid_selection','closed','cancel','req_ver_dept','verified','gmapproved'])]}"/>
+                        <button name="action_confirm" string="Confirm" type="object" class="oe_highlight" states="draft"/>
                         <button name="action_new_quotation" string="New Quotation" type="object" class="oe_highlight"
-                                attrs="{'invisible':[('state','in',['draft','bid_selection','closed','req_ver_dept','verified','gmapproved','cancel'])]}"/>
+                                states="confirm"/>
                         <button name="action_validate" string="Validate" type="object" class="oe_highlight"
                                 attrs="{'invisible':[('state','in',['draft','bid_selection','req_ver_dept','verified','gmapproved','closed','cancel'])]}"/>
                         <button name="action_analyze_rfq" string="Supplier Analysis" type="object" class="oe_highlight"
@@ -111,36 +107,28 @@
                             </button>
                         </div>
                         <div class="oe_title">
+                            <span>Purchase Tender</span>
                             <h1>
                                 <field name="name"/>
                             </h1>
                         </div>
                         <group>
                             <group>
-                                <field name="tender_user_id"
-                                       attrs="{'readonly':[('state','in',['closed','cancel'])]}"/>
-                                <field name="tender_type" widget="selection"
-                                       attrs="{'readonly':[('state','in',['closed','cancel'])]}"/>
-                                <field name="vendor_id" invisible="1"/>
-                                <field name="partner_ids" attrs="{'readonly':[('state','in',['closed','cancel'])]}"
-                                       widget="many2many_tags"/>
-                                <field name="tender_deadline"
-                                       attrs="{'readonly':[('state','in',['closed','cancel'])]}"/>
+                                <field name="tender_user_id"/>
+                                <field name="tender_type" widget="selection"/>
+                                <field name="partner_ids" widget="many2many_tags"/>
+                                <field name="tender_deadline"/>
                             </group>
                             <group>
-                                <field name="order_date" attrs="{'readonly':[('state','in',['closed','cancel'])]}"/>
-                                <field name="delivery_date"
-                                       attrs="{'readonly':[('state','in',['closed','cancel'])]}"/>
+                                <field name="announce_date"/>
+                                <field name="delivery_date"/>
                                 <field name="source" placeholder="e.g. PO0001"
                                        attrs="{'readonly':[('state','in',['closed','cancel'])]}"/>
-                                <!--                                <field name="purchase_request_id"-->
-                                <!--                                       attrs="{'readonly':[('state','in',['closed','cancel'])]}"/>-->
                             </group>
                         </group>
                         <notebook>
                             <page string="Products">
-                                <field name="purchase_tender_line_ids"
-                                       attrs="{'readonly':[('state','in',['closed','cancel'])]}">
+                                <field name="purchase_tender_line_ids">
                                     <form string="Purchase Tender">
                                         <group>
                                             <group>
@@ -164,11 +152,23 @@
                                 <field name="dept_note"
                                        attrs="{'readonly':[('state','in',['closed','draft','confirm','bid_selection','verified','gmapproved','cancel'])]}"/>
                             </page>
+                            <page string="Other Information">
+                                <group>
+                                    <group string="File Type">
+                                        <field name="apply_type"/>
+                                        <field name="technical_file_date"/>
+                                        <field name="financial_file_date"/>
+                                    </group>
+                                </group>
+
+                            </page>
+                            <page string="Terms &amp; Conditions">
+                                <field name="notes" string="Terms &amp; Conditions" class="oe_inline"
+                                       placeholder="Define your terms and conditions ..."
+                                       attrs="{'readonly':[('state','in',['closed','cancel'])]}"/>
+                                <div class="oe_clear"/>
+                            </page>
                         </notebook>
-                        <field name="notes" string="Terms &amp; Conditions" class="oe_inline"
-                               placeholder="Define your terms and conditions ..."
-                               attrs="{'readonly':[('state','in',['closed','cancel'])]}"/>
-                        <div class="oe_clear"/>
                     </sheet>
                     <div class="oe_chatter">
                         <field name="message_follower_ids" widget="mail_followers"/>
@@ -187,9 +187,8 @@
                     <field name="name"/>
                     <field name="tender_user_id"/>
                     <field name="tender_type"/>
-                    <field name="vendor_id"/>
                     <field name="tender_deadline"/>
-                    <field name="order_date"/>
+                    <field name="announce_date"/>
                     <field name="delivery_date"/>
                     <field name="source"/>
                     <field name="state"/>

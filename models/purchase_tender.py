@@ -18,23 +18,34 @@ class PurchaseTender(models.Model):
     rfq_count = fields.Integer("Received Quotations", compute='get_rfq_count')
     order_count = fields.Integer("Selected Orders", compute='get_order_count')
     tender_user_id = fields.Many2one('res.users', 'Representative', track_visibility="onchange",
-                                     default=lambda self: self.env.user)
+                                     default=lambda self: self.env.user, readonly=True,
+                                     states={'draft': [('readonly', False)]}, )
     tender_type = fields.Many2one('purchase.tender.type', 'Tender Type', required=True,
-                                  track_visibility="onchange")
-    vendor_id = fields.Many2one('res.partner', 'Vendor', track_visibility="onchange")
-    partner_id = fields.Many2one('res.partner', 'Partner')
+                                  track_visibility="onchange", readonly=True, states={'draft': [('readonly', False)]}, )
     purchase_request_id = fields.Many2one('purchase.request', 'Purchase Request')
-    partner_ids = fields.Many2many('res.partner', string='Vendors', track_visibility="onchange")
-    user_id = fields.Many2one('res.users', 'User')
-    tender_deadline = fields.Datetime('Tender Deadline', track_visibility="onchange", default=fields.Date.context_today)
-    order_date = fields.Date('Ordering Date', track_visibility="onchange", default=fields.Date.context_today)
-    delivery_date = fields.Date('Delivery Date', track_visibility="onchange", default=fields.Date.context_today)
+    partner_ids = fields.Many2many('res.partner', string='Vendors', track_visibility="onchange", readonly=True,
+                                   states={'draft': [('readonly', False)]}, )
+    tender_deadline = fields.Datetime('Tender Deadline', track_visibility="onchange", default=fields.Date.context_today,
+                                      readonly=True, states={'draft': [('readonly', False)]}, )
+    announce_date = fields.Date('Announce Date', track_visibility="onchange", default=fields.Date.context_today,
+                             readonly=True, states={'draft': [('readonly', False)]}, )
+    delivery_date = fields.Date('Delivery Date', track_visibility="onchange", default=fields.Date.context_today,
+                                readonly=True, states={'draft': [('readonly', False)]}, )
     source = fields.Char('Source Document', track_visibility="onchange")
     dept_note = fields.Char('Department note')
     notes = fields.Text("Terms & Conditions", track_visibility="onchange")
-    purchase_tender_line_ids = fields.One2many('purchase.tender.line', 'tender_id',
-                                               string='Purchase Tender Line')
+    purchase_tender_line_ids = fields.One2many('purchase.tender.line', 'tender_id', string='Purchase Tender Line',
+                                               readonly=True, states={'draft': [('readonly', False)]}, )
     branch_request_count = fields.Integer("Branch Requests", compute='_get_branch_request_count')
+    apply_type = fields.Selection(string="Apply Type", selection=[('file', '1 File'), ('two-file', 'Two Files'), ],
+                                  required=True, readonly=True, states={'draft': [('readonly', False)]},
+                                  default='file')
+    technical_file_date = fields.Date('Technical File Date', track_visibility="onchange",
+                                      default=fields.Date.context_today,
+                                      readonly=True, states={'draft': [('readonly', False)]}, )
+    financial_file_date = fields.Date('Financial File Date', track_visibility="onchange",
+                                      default=fields.Date.context_today,
+                                      readonly=True, states={'draft': [('readonly', False)]}, )
 
     def unlink(self):
         for order in self:
@@ -92,6 +103,10 @@ class PurchaseTender(models.Model):
                     rec.branch_request_count = 0
 
     def action_confirm(self):
+        # insert lines in tender lines
+        if len(self.purchase_tender_line_ids) == 0:
+            raise UserError(_('You Must Select Products For Tender.'))
+
         if self:
             for rec in self:
                 seq = self.env['ir.sequence'].next_by_code('purchase.tender')
@@ -132,6 +147,10 @@ class PurchaseTender(models.Model):
                 }
 
     def action_validate(self):
+        # insert lines in tender lines
+        if len(self.purchase_tender_line_ids) == 0:
+            raise UserError(_('You Must Select Products For Tender.'))
+
         if self:
             for rec in self:
                 rec.state = 'bid_selection'
