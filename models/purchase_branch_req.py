@@ -3,6 +3,7 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools.misc import formatLang, get_lang
+from odoo.osv import expression
 
 
 class PurchaseBranchReq(models.Model):
@@ -40,6 +41,23 @@ class PurchaseBranchReq(models.Model):
                                      ('req_ver_dept', 'Request Verification'), ('verified', 'Verified'),
                                      ('gmapproved', 'GM Approved'), ('closed', 'Closed'), ('cancel', 'Cancelled')],
                                     string="Tender State", default='draft', related="tender_id.state", store=True)
+
+    def name_get(self):
+        res = []
+        for rec in self:
+            name = '[%s] - %s - %s' % (rec.internal_reference, rec.name, rec.branch_id.name)
+            res.append((rec.id, name))
+        return res
+
+    @api.model
+    def _name_search(self, name, args=None, operator='ilike', limit=100, name_get_uid=None):
+        args = args or []
+        if operator == 'ilike' and not (name or '').strip():
+            domain = []
+        else:
+            domain = ['|', ('name', operator, name), ('internal_reference', operator, name)]
+        rec = self._search(expression.AND([domain, args]), limit=limit, access_rights_uid=name_get_uid)
+        return models.lazy_name_get(self.browse(rec).with_user(name_get_uid))
 
     def unlink(self):
         for order in self:

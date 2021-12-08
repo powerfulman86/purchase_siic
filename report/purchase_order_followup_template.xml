@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_purchase_order_followup">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <t t-set="o" t-value="o.with_context(lang=lang)"/>
+                    <div class="page">
+                        <div class="oe_structure"/>
+                        <h2>Purchase Order Follow-Up #
+                            <span t-field="o.name"/>
+                        </h2>
+                        <div id="information" class="row mt32 mb32">
+                            <div t-if="o.date_followup" class="col-3 bm-2">
+                                <strong>Date:</strong>
+                                <p t-field="o.date_followup" class="m-0"/>
+                            </div>
+
+                            <div t-if="o.partner_id" class="col-3 bm-2">
+                                <strong>Vendor:</strong>
+                                <p t-field="o.partner_id" class="m-0"/>
+                            </div>
+
+                            <div t-if="o.purchase_id" class="col-3 bm-2">
+                                <strong>Purchase Order:</strong>
+                                <p t-field="o.purchase_id" class="m-0"/>
+                            </div>
+
+                            <div t-if="o.date_order" class="col-3 bm-2">
+                                <strong>Order Date:</strong>
+                                <p t-field="o.date_order" class="m-0"/>
+                            </div>
+                        </div>
+                        <div id="information" class="row mt32 mb32">
+                            <div t-if="o.payment_term_id" class="col-3 bm-2">
+                                <strong>Payment Term:</strong>
+                                <p t-field="o.payment_term_id" class="m-0"/>
+                            </div>
+
+                            <div t-if="o.amount_total" class="col-3 bm-2">
+                                <strong>Order Total:</strong>
+                                <p t-field="o.amount_total" class="m-0"/>
+                            </div>
+
+                            <div t-if="o.currency_id" class="col-3 bm-2">
+                                <strong>Currency:</strong>
+                                <p t-field="o.currency_id" class="m-0"/>
+                            </div>
+
+                            <div t-if="o.currency_rate" class="col-3 bm-2">
+                                <strong>Currency Rate:</strong>
+                                <p t-field="o.currency_rate" class="m-0"/>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <report string="Purchase Order Follow-Up"
+            id="action_report_purchase_order_followup"
+            model="purchase.order.followup"
+            report_type="qweb-pdf"
+            name="purchase_siic.report_purchase_order_followup"
+            file="purchase_siic.report_purchase_order_followup"
+            print_report_name="'Purchase Order Follow-Up - %s' % (object.name)"/>
+</odoo>

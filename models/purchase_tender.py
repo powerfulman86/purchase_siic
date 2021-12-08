@@ -2,6 +2,7 @@
 
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError, ValidationError
+from odoo.osv import expression
 
 
 class PurchaseTender(models.Model):
@@ -48,6 +49,23 @@ class PurchaseTender(models.Model):
     financial_file_date = fields.Date('Financial File Date', track_visibility="onchange",
                                       default=fields.Date.context_today,
                                       readonly=True, states={'draft': [('readonly', False)]}, )
+
+    def name_get(self):
+        res = []
+        for rec in self:
+            name = '[%s] - %s' % (rec.internal_reference, rec.name)
+            res.append((rec.id, name))
+        return res
+
+    @api.model
+    def _name_search(self, name, args=None, operator='ilike', limit=100, name_get_uid=None):
+        args = args or []
+        if operator == 'ilike' and not (name or '').strip():
+            domain = []
+        else:
+            domain = ['|', ('name', operator, name), ('internal_reference', operator, name)]
+        rec = self._search(expression.AND([domain, args]), limit=limit, access_rights_uid=name_get_uid)
+        return models.lazy_name_get(self.browse(rec).with_user(name_get_uid))
 
     def unlink(self):
         for order in self:
@@ -167,8 +185,8 @@ class PurchaseTender(models.Model):
             'type': 'ir.actions.act_window',
             'res_model': 'purchase.tender.order.line',
             'view_type': 'form',
-            'view_mode': 'tree,form',
-            'views': [(list_id, 'tree'), (form_id, 'form')],
+            'view_mode': 'tree,form,pivot',
+            # 'views': [(list_id, 'tree'), (form_id, 'form')],
             'domain': [('tender_id', '=', self.id), ('state', 'not in', ['cancel']),
                        ('order_id.selected_order', '=', False)],
             'context': {'search_default_groupby_product': 1},

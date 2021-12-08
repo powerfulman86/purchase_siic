@@ -58,13 +58,15 @@
                     <group expand="0" string="Group By">
                         <filter name="tender" string="Tender" domain="[]" context="{'group_by':'tender_id'}"/>
                         <filter name="order" string="Purchase Order" domain="[]" context="{'group_by':'order_id'}"/>
+                        <filter name="product" string="Product" domain="[]" context="{'group_by':'product_id'}"/>
+                        <filter name="partner" string="Vendor" domain="[]" context="{'group_by':'partner_id'}"/>
                     </group>
                 </search>
             </field>
         </record>
 
-        <record model="ir.ui.view" id="purchase_order_line_pivot_custom">
-            <field name="name">purchase.order.line.pivot.custom</field>
+        <record id="purchase_order_line_pivot_custom" model="ir.ui.view">
+            <field name="name">purchase.tender.order.line.pivot</field>
             <field name="model">purchase.tender.order.line</field>
             <field name="arch" type="xml">
                 <pivot string="Tender Lines" display_quantity="True">

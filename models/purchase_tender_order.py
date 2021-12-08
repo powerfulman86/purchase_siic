@@ -95,7 +95,7 @@ class PurchaseTenderOrder(models.Model):
     company_id = fields.Many2one('res.company', 'Company', required=True, index=True, states=READONLY_STATES,
                                  default=lambda self: self.env.company.id)
     currency_rate = fields.Float("Currency Rate", compute='_compute_currency_rate', compute_sudo=True, store=True,
-                                 readonly=True,
+                                 readonly=True, states={'draft': [('readonly', False)]},
                                  help='Ratio between the purchase order currency and the company currency')
 
     tender_id = fields.Many2one('purchase.tender', 'Purchase Tender')

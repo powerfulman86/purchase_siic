@@ -53,18 +53,18 @@ class PurchaseOrderFollowup(models.Model):
     # in advance
     adv_trans_date = fields.Date(string='Date Of Transfer', states={'draft': [('readonly', False)]},
                                  default=fields.Date.context_today)
-    adv_amount = fields.Monetary(string='Amount', store=True, default=0)
-    bank_id = fields.Many2one(comodel_name="res.bank", string="Bank", required=False, )
+    adv_amount = fields.Monetary(string='Advance Amount', store=True, default=0)
+    bank_id = fields.Many2one(comodel_name="res.bank", string="Advance Bank", required=False, )
 
     # LC
-    lc_no = fields.Char(string="LC Number", required=False, )
+    lc_no = fields.Char(string="L.C Number", required=False, )
     lc_date = fields.Date(string="Date", required=False, )
-    lc_total = fields.Monetary(string='Amount', store=True, )
+    lc_total = fields.Monetary(string='L.C Amount', store=True, )
     lc_expire_date = fields.Date(string="Expire Date", required=False, )
     lc_latest_shipment_date = fields.Date(string="Latest Shipment Date", required=False, )
     lc_issue_bank = fields.Many2one(comodel_name="res.bank", string=" Issue Bank", required=False, )
     lc_corress_bank = fields.Many2one(comodel_name="res.bank", string=" Correspondent Bank", required=False, )
-    lc_state = fields.Selection(string="Status", required=False,
+    lc_state = fields.Selection(string="L.C Status", required=False,
                                 selection=[('confirmed', 'Confirmed'), ('unconfirmed', 'Un Confirmed'), ], )
     hs_code = fields.Char(string="HS.Code", required=False, )
     lc_extend_validity = fields.Date(string="Extention OF LC Validity", required=False, )
@@ -79,19 +79,19 @@ class PurchaseOrderFollowup(models.Model):
     date_bank_doc_deliver_alex = fields.Date(string="Deliver Docs.Alex.Sector Date", required=False, )
     date_receipt_tranzit = fields.Date(string="Receipt Goods-Tranzit Date", required=False, )
     date_receipt_fact = fields.Date(string="Receipt Goods-Factories Date", required=False, )
-    shipment_status = fields.Selection(string="Status",
+    shipment_status = fields.Selection(string="Shipment Status",
                                        selection=[('identical', 'Identical'), ('notidentical', 'Non-Identical'),
                                                   ('missing', 'Missing'), ], required=False, )
     date_delivery_note = fields.Date(string="Delivery Note Dated", required=False, )
 
     # lg
     lg_no = fields.Char(string="L.G Number", required=False, )
-    lg_bank_id = fields.Many2one(comodel_name="res.bank", string="Bank", required=False, )
+    lg_bank_id = fields.Many2one(comodel_name="res.bank", string="L.G Bank", required=False, )
     lg_type = fields.Many2one(comodel_name="purchase.guarantee.type", string="L.G Type", required=False, )
     lg_validity = fields.Char(string="Validity", required=False, )
     lg_amount = fields.Monetary(string='Amount', default=0)
-    lg_currency_id = fields.Many2one('res.currency', 'Currency', store=True, )
-    lg_currency_rate = fields.Float("Currency Rate", store=True, readonly=True,
+    lg_currency_id = fields.Many2one('res.currency', 'L.G Currency', store=True, )
+    lg_currency_rate = fields.Float("L.G Currency Rate", store=True, readonly=True,
                                     help='Ratio between the purchase order currency and the company currency')
     lg_valid_for = fields.Char(string="Valid For", required=False, )
     lg_submitted_from = fields.Char(string="Submitted From", required=False, )
@@ -100,19 +100,19 @@ class PurchaseOrderFollowup(models.Model):
     # fines
     # storage fines
     storage_fees = fields.Monetary(string='Storage Fees', default=0)
-    storage_currency_id = fields.Many2one('res.currency', 'Currency', store=True, )
-    storage_currency_rate = fields.Float("Currency Rate", store=True, readonly=True,
+    storage_currency_id = fields.Many2one('res.currency', 'Storage Currency', store=True, )
+    storage_currency_rate = fields.Float("Storage Currency Rate", store=True, readonly=True,
                                          help='Ratio between the purchase order currency and the company currency')
 
     # demurrage fines
     demurrage_fees = fields.Monetary(string='Demurrage Fees', default=0)
-    demurrage_currency_id = fields.Many2one('res.currency', 'Currency', store=True, )
-    demurrage_currency_rate = fields.Float("Currency Rate", store=True, readonly=True,
+    demurrage_currency_id = fields.Many2one('res.currency', 'Demurrage Currency', store=True, )
+    demurrage_currency_rate = fields.Float("Demurrage Currency Rate", store=True, readonly=True,
                                            help='Ratio between the purchase order currency and the company currency')
     # Delay fines
     delay_penalty = fields.Monetary(string='Delay Penalty', default=0)
-    penalty_currency_id = fields.Many2one('res.currency', 'Currency', store=True, )
-    penalty_currency_rate = fields.Float("Currency Rate", store=True, readonly=True,
+    penalty_currency_id = fields.Many2one('res.currency', 'Penalty Currency', store=True, )
+    penalty_currency_rate = fields.Float("Penalty Currency Rate", store=True, readonly=True,
                                          help='Ratio between the purchase order currency and the company currency')
     penalty_percentage = fields.Float(string="Penalty Percentage", required=False, default=0)
 
@@ -150,15 +150,13 @@ class PurchaseOrderFollowup(models.Model):
         return result
 
     def name_get(self):
-        if self._context.get('sale_show_partner_name'):
-            res = []
-            for rec in self:
-                name = rec.name
-                if rec.partner_id.name:
-                    name = '%s - %s' % (name, rec.partner_id.name)
-                res.append((rec.id, name))
-            return res
-        return super(PurchaseOrderFollowup, self).name_get()
+        res = []
+        for rec in self:
+            name = rec.name
+            if rec.partner_id.name:
+                name = '%s - %s' % (name, rec.partner_id.name)
+            res.append((rec.id, name))
+        return res
 
     @api.model
     def _name_search(self, name, args=None, operator='ilike', limit=100, name_get_uid=None):
