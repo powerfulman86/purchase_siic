@@ -74,6 +74,7 @@
                     <field name="partner_id" type="col"/>
                     <field name="product_qty" type="measure"/>
                     <field name="price_unit" type="measure"/>
+                    <field name="amount_currency" type="measure"/>
                 </pivot>
             </field>
         </record>

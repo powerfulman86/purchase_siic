@@ -198,6 +198,11 @@ class PurchaseTenderOrder(models.Model):
         for order in self:
             order.order_line._compute_tax_id()
 
+    @api.onchange('currency_rate')
+    def _calculate_currency(self):
+        for order in self:
+            order.order_line._compute_amount()
+
     @api.onchange('partner_id')
     def onchange_partner_id_warning(self):
         if not self.partner_id or not self.env.user.has_group('purchase.group_warning_purchase'):
@@ -276,7 +281,7 @@ class PurchaseTenderOrderLine(models.Model):
     product_id = fields.Many2one('product.product', string='Product', domain=[('purchase_ok', '=', True)],
                                  change_default=True)
     product_type = fields.Selection(related='product_id.type', readonly=True)
-    price_unit = fields.Float(string='Unit Price', required=True, digits='Product Price')
+    price_unit = fields.Float(string='Unit Price', digits='Product Price', compute='_compute_amount', store=True)
 
     price_subtotal = fields.Monetary(compute='_compute_amount', string='Subtotal', store=True)
     price_total = fields.Monetary(compute='_compute_amount', string='Total', store=True)
@@ -306,8 +311,10 @@ class PurchaseTenderOrderLine(models.Model):
                                     string="Tender State", default='draft', related="tender_id.state", store=True)
 
     cancel_lines = fields.Boolean("Cancel Lines", related='order_id.cancel_lines', store=True)
+    amount_currency = fields.Monetary(string='Amount in Currency', store=True, default=0)
+    currency_rate = fields.Float("Currency Rate", related='order_id.currency_rate', default=1, store=True)
 
-    @api.depends('product_qty', 'price_unit', 'taxes_id')
+    @api.depends('product_qty', 'price_unit', 'taxes_id', 'currency_id', 'amount_currency')
     def _compute_amount(self):
         for line in self:
             vals = line._prepare_compute_all_values()
@@ -317,7 +324,9 @@ class PurchaseTenderOrderLine(models.Model):
                 vals['product_qty'],
                 vals['product'],
                 vals['partner'])
+            # line.amount_currency = line.price_unit = line.currency_rate
             line.update({
+                'price_unit': line.amount_currency * line.currency_rate,
                 'price_tax': sum(t.get('amount', 0.0) for t in taxes.get('taxes', [])),
                 'price_total': taxes['total_included'],
                 'price_subtotal': taxes['total_excluded'],
@@ -333,6 +342,7 @@ class PurchaseTenderOrderLine(models.Model):
         return {
             'price_unit': self.price_unit,
             'currency_id': self.order_id.currency_id,
+            'amount_currency': self.amount_currency,
             'product_qty': self.product_qty,
             'product': self.product_id,
             'partner': self.order_id.partner_id,

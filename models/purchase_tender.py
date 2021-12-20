@@ -77,9 +77,7 @@ class PurchaseTender(models.Model):
     def create(self, values):
         if values.get('name', _('New')) == _('New'):
             seq_date = None
-
             values['name'] = self.env['ir.sequence'].next_by_code('purchase.tender', sequence_date=seq_date) or _('New')
-
         result = super(PurchaseTender, self).create(values)
         return result
 
@@ -148,6 +146,7 @@ class PurchaseTender(models.Model):
                         'tender_id': rec.id,
                         'product_uom': rec_line.product_id.uom_id.id,
                         'price_unit': rec_line.price_unit,
+                        'currency_rate': 1,
                     }
                     line_ids.append((0, 0, line_vals))
                 return {
