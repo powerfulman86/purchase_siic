@@ -461,8 +461,8 @@
         </record>
 
         <menuitem action="purchase_tender_order"
+                  name="Tender Order"
                   id="menu_tender_order"
-                  parent="purchase.menu_procurement_management"/>
-
+                  parent="menu_tender_management"/>
     </data>
 </odoo>

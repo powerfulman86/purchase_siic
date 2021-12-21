@@ -95,6 +95,6 @@
         </record>
 
         <menuitem id="bidlines_menu" name="Analyze Multiple Tenders" action="action_po_bidline_action"
-                  parent="purchase.menu_procurement_management"/>
+                  parent="menu_tender_management"/>
     </data>
 </odoo>

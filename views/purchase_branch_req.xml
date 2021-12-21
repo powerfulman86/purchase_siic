@@ -186,6 +186,6 @@
 
         <menuitem action="purchase_branch_req"
                   id="menu_purchase_branch_req"
-                  parent="purchase.menu_procurement_management"/>
+                  parent="menu_tender_management"/>
     </data>
 </odoo>

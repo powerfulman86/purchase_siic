@@ -211,9 +211,12 @@
             </field>
         </record>
 
+        <menuitem id="menu_tender_management" name="Tender"
+            parent="purchase.menu_purchase_root" sequence="2" />
+
         <menuitem id="purchase_tender_menu"
                   name="Purchase Tender"
-                  parent="purchase.menu_procurement_management"
+                  parent="menu_tender_management"
                   action="purchase_tender_action"/>
 
     </data>
